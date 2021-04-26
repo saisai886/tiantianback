@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/aop
+        https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--读取属性文件-->
+    <context:property-placeholder location="classpath*:db.properties"></context:property-placeholder>
+
+    <!--由Spring容器来创建数据源Druid-->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="${jdbc.driverClassName}"></property>
+        <property name="url" value="${jdbc.url}"></property>
+        <property name="username" value="${jdbc.username}"></property>
+        <property name="password" value="${jdbc.password}"></property>
+    </bean>
+
+    <!--由Spring容器创建SqlSessionFacctoryBean-->
+    <bean id="sessionFactoryBean" class="com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"></property>
+        <!--分页插件-->
+        <property name="plugins">
+            <array>
+                <bean class="com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor"></bean>
+                <bean  class="com.github.pagehelper.PageInterceptor">
+                    <property name="properties">
+                        <value>helperDialect=Mysql</value>
+                    </property>
+                </bean>
+            </array>
+
+        </property>
+    </bean>
+
+    <!--自动生成mapper接口的动态代理-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+       <property name="sqlSessionFactoryBeanName" value="sessionFactoryBean"></property>
+        <property name="basePackage" value="com.guigu.tian.mapper"></property>
+    </bean>
+
+
+
+    <!--改为注解模式-->
+     <context:component-scan base-package="com"></context:component-scan>
+
+
+    <!--=================以下是事务注解的相关配置==========-->
+</beans>

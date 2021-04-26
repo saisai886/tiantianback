@@ -1,0 +1,6 @@
+# Project exclude paths
+/tian_commons/target/
+/tian_domain/target/
+/tian_mapper/target/
+/tian_service/target/
+/tian_web/target/

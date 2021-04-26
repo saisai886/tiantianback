@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!--扫描springmvc子容器中的所有注解
+	@RequestParam
+	@ResponseBody
+	@RequestBody
+	-->
+    <mvc:annotation-driven></mvc:annotation-driven>
+    <!--<mvc:resources mapping="css" location="css/**"></mvc:resources>-->
+
+    <!--改为注解模式-->
+    <!--web容器初始化时就加载好注解-->
+    <context:component-scan base-package="com"></context:component-scan>
+
+
+
+    <!--视图解析器-->
+<!--    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">-->
+<!--        <property name="prefix" value="/WEB-INF/jsp/"></property>-->
+<!--        <property name="suffix" value=".jsp"></property>-->
+<!--    </bean>-->
+
+
+
+    <!--异常处理器-->
+<!--<bean class="com.guigu.ssm.exception.CustomeExceptionResolver"></bean>-->
+
+
+    <!--文件上传的解析器，必须要实现MultipartResolver-->
+    <!--<bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver">-->
+        <!--<property name="defaultEncoding" value="utf-8"></property>-->
+        <!--<property name="maxUploadSize" value="104857600"></property>-->
+    <!--</bean>-->
+
+
+    <!--配置拦截器-->
+    <!--<mvc:interceptors>-->
+        <!--<mvc:interceptor>-->
+            <!--<mvc:mapping path="/**"/>-->
+            <!--<mvc:exclude-mapping path="/jzxx/ShowJzxx.action"/>-->
+            <!--<mvc:exclude-mapping path="/account/login.action"/>-->
+            <!--<bean class="com.guigu.juanzeng.interceptor.LoginInterceptor"></bean>-->
+        <!--</mvc:interceptor>-->
+    <!--</mvc:interceptors>-->
+
+    <!--注册类型转换器-->
+    <!--<bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">-->
+        <!--<property name="converters">-->
+            <!--<set>-->
+                <!--&lt;!&ndash;自定义日期类型的转换器&ndash;&gt;-->
+                <!--<bean class="com.guigu.smbms.controller.convert.DateConverter"></bean>-->
+            <!--</set>-->
+        <!--</property>-->
+    <!--</bean>-->
+
+
+</beans>
+
