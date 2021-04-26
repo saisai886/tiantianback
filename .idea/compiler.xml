@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="tian_mapper" />
-        <module name="tian_service" />
         <module name="tian_commons" />
-        <module name="tian_web" />
+        <module name="tian_mapper" />
         <module name="tian_domain" />
+        <module name="tian_service" />
+        <module name="tian_web" />
       </profile>
     </annotationProcessing>
   </component>
