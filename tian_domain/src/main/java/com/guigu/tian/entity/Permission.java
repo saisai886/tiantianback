@@ -26,11 +26,22 @@ public class Permission {
     private  String pcode;
     //父级id
     private  Integer parentid;
+    //图标
+    @TableField("iconUrl")
+    private String iconUrl; 
 
     @TableField(exist =false)
     List<Permission> permissions;
 
+    @TableField(exist =false)
+    List<Permission> permissionss;
+
     @TableField(exist = false)
     private  boolean checked;
+
+    //员工id
+    private Integer ygid;
+
+
 
 }

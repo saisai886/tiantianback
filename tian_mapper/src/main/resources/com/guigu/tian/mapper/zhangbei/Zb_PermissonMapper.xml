@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.guigu.tian.mapper.zhangbei.Zb_PermissonMapper" >
+    <select id="PermissionAll" resultType="com.guigu.tian.entity.Permission" parameterType="com.guigu.tian.entity.Permission">
+SELECT yg.`ygid`,qx.* FROM `yuangong` yg
+INNER JOIN `userrole` jsyg
+ON yg.`ygid` = jsyg.`ygid`
+INNER JOIN role js
+ON js.`rid` = jsyg.`rid`
+INNER JOIN `rolepermission` cd
+ON cd.`rid` = js.`rid`
+INNER JOIN `permission` qx
+ON qx.`pid`= cd.`pid`
+
+<where>
+    <if test="ygid!=0">
+        and  yg.`ygid` = #{ygid}
+        AND qx.pisnavi = #{pisnavi}
+    </if>
+    <if test="pid!=null and pid!=''">
+    and qx.`parentid`=#{pid}
+    </if>
+</where>
+    </select>
+</mapper>
