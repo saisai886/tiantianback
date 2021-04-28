@@ -4,6 +4,7 @@ import com.guigu.tian.entity.Yuangong;
 import com.guigu.tian.service.zhangbei.YuangongService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -19,9 +20,8 @@ public class YuangongController {
 
     @RequestMapping("ygdenglu.action")
     @ResponseBody
-    public String ygdenglu(Yuangong yuangong, HttpServletRequest request){
+    public Yuangong ygdenglu(Yuangong yuangong, HttpServletRequest request, Model model){
         Yuangong yuanggodenglu = yuangongService.yuanggodenglu(yuangong);
-        request.getSession().setAttribute("yg",yuanggodenglu);
-        return yuanggodenglu!=null?"登陆成功":"用户名或密码错误";
+        return yuanggodenglu;
     }
 }

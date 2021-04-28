@@ -13,12 +13,17 @@ INNER JOIN `permission` qx
 ON qx.`pid`= cd.`pid`
 
 <where>
-    <if test="ygid!=0">
+    <if test="pisnavi==0">
         and  yg.`ygid` = #{ygid}
         AND qx.pisnavi = #{pisnavi}
     </if>
-    <if test="pid!=null and pid!=''">
+    <if test="pisnavi==1">
+    and  yg.`ygid` = #{ygid}
     and qx.`parentid`=#{pid}
+    </if>
+    <if test="pisnavi==2">
+        and  yg.`ygid` = #{ygid}
+        and qx.`parentid`=#{pid}
     </if>
 </where>
     </select>

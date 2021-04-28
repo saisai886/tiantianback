@@ -5,6 +5,7 @@ import com.guigu.tian.entity.Yuangong;
 import com.guigu.tian.service.zhangbei.PermissionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -21,9 +22,9 @@ public class PermissionController {
 
     @RequestMapping("qxAll.action")
     @ResponseBody
-    public List<Permission> qxAll(HttpServletRequest request){
-        Yuangong yg = (Yuangong) request.getSession().getAttribute("yg");
-        List<Permission> permissions = permissionService.queryPermission(1);
+    public List<Permission> qxAll(Integer ygid){
+
+        List<Permission> permissions = permissionService.queryPermission(ygid);
         return permissions;
     }
 }
