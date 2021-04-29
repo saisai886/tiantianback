@@ -27,4 +27,36 @@ ON qx.`pid`= cd.`pid`
     </if>
 </where>
     </select>
+
+    <select id="PermissionFYAll" resultType="com.guigu.tian.entity.Permission" parameterType="com.guigu.tian.entity.Permission">
+        SELECT yg.`ygid`,qx.* FROM `yuangong` yg
+        INNER JOIN `userrole` jsyg
+        ON yg.`ygid` = jsyg.`ygid`
+        INNER JOIN role js
+        ON js.`rid` = jsyg.`rid`
+        INNER JOIN `rolepermission` cd
+        ON cd.`rid` = js.`rid`
+        INNER JOIN `permission` qx
+        ON qx.`pid`= cd.`pid`
+        <where>
+        <if test="pid==0">
+            and  yg.`ygid` = #{ygid}
+            AND qx.pisnavi = #{pisnavi}
+        </if>
+        <if test="pisnavi==0">
+            and  yg.`ygid` = #{ygid}
+            AND qx.pisnavi = #{pisnavi}
+        </if>
+        <if test="pisnavi==1 and pid!=0">
+            and  yg.`ygid` = #{ygid}
+            and qx.`parentid`=#{pid}
+            AND qx.pisnavi = #{pisnavi}
+        </if>
+        <if test="pisnavi==2 and pid!=0">
+            and  yg.`ygid` = #{ygid}
+            and qx.`parentid`=#{pid}
+            AND qx.pisnavi = #{pisnavi}
+        </if>
+        </where>
+    </select>
 </mapper>

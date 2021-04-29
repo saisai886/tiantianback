@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface Zb_PermissonMapper extends BaseMapper<Permission> {
     List<Permission> PermissionAll(Permission permission);
+
+    List<Permission> PermissionFYAll(Permission permission);
 }
