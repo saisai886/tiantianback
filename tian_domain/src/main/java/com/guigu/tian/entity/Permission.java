@@ -40,6 +40,7 @@ public class Permission {
     private  boolean checked;
 
     //员工id
+    @TableField(exist = false)
     private Integer ygid;
 
 
