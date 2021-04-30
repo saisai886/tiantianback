@@ -45,8 +45,22 @@ public class XszShopController {
 
         IPage<Shop> page = shopService.page(new Page<Shop>(pageNo, pageSize), queryWrapper);
         return  page;
-
     }
+
+    @RequestMapping("selectbysid")
+    @ResponseBody
+    public  Shop selectbysid(Integer sid){
+        Shop shop = shopService.getById(sid);
+        return  shop;
+    }
+
+
+
+
+
+
+
+
 
 
 
