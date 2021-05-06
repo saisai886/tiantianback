@@ -24,7 +24,7 @@ public class Shop {
     private  Integer stid;
     private  Integer skucun;
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd ")
     private Date sbaozhitime;
 
     private String simg;
