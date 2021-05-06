@@ -43,6 +43,9 @@ public class Permission {
     @TableField(exist = false)
     private Integer ygid;
 
+    //权限状态
+    private String pstatus;
+
 
 
 }

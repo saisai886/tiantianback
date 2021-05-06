@@ -13,6 +13,7 @@ INNER JOIN `permission` qx
 ON qx.`pid`= cd.`pid`
 
 <where>
+    AND qx.pstatus = '0'
     <if test="pisnavi==0">
         and  yg.`ygid` = #{ygid}
         AND qx.pisnavi = #{pisnavi}
@@ -26,6 +27,7 @@ ON qx.`pid`= cd.`pid`
         and qx.`parentid`=#{pid}
     </if>
 </where>
+    ORDER BY qx.pid ASC
     </select>
 
     <select id="PermissionFYAll" resultType="com.guigu.tian.entity.Permission" parameterType="com.guigu.tian.entity.Permission">
@@ -39,6 +41,7 @@ ON qx.`pid`= cd.`pid`
         INNER JOIN `permission` qx
         ON qx.`pid`= cd.`pid`
         <where>
+        AND qx.pstatus = '0'
         <if test="pid==0">
             and  yg.`ygid` = #{ygid}
             AND qx.pisnavi = #{pisnavi}
@@ -58,5 +61,12 @@ ON qx.`pid`= cd.`pid`
             AND qx.pisnavi = #{pisnavi}
         </if>
         </where>
+        ORDER BY qx.pid ASC
     </select>
+
+    <select id="deleterolepermission" parameterType="com.guigu.tian.mapper.zhangbei.Zb_PermissonMapper">
+       DELETE FROM rolepermission where pid =#{pid}
+    </select>
+
+
 </mapper>

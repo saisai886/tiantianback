@@ -10,4 +10,16 @@ public interface PermissionService extends IService<Permission> {
     List<Permission> queryPermission(Integer ygid);
 
     PageInfo<Permission> PermissionFYAll(String Pisnavi,Integer pageNo, Integer pageSize);
+
+    Boolean perdelete(Integer pid);
+
+    List<Permission> pisnaviAll(String pisnavi);
+
+    int Add(Permission permission);
+
+    Permission updateAll(Permission permission);
+
+    List<Permission> updateList(Permission permission);
+
+    Boolean qxupdate(Permission permission);
 }

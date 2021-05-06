@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
@@ -33,5 +32,47 @@ public class PermissionController {
                                        Integer pageSize){
         PageInfo<Permission> pageInfo = permissionService.PermissionFYAll(Pisnavi,pageNo, pageSize);
         return pageInfo;
+    }
+
+    @RequestMapping("cdsc.action")
+    @ResponseBody
+    public Boolean qxAll1(Integer pid){
+        Boolean perdelete = permissionService.perdelete(pid);
+        return perdelete;
+    }
+
+    @RequestMapping("cdjb.action")
+    @ResponseBody
+    public List<Permission> cdjb(String pisnavi){
+        List<Permission> permissions = permissionService.pisnaviAll(pisnavi);
+        return permissions;
+    }
+
+    @RequestMapping("cdtj.action")
+    @ResponseBody
+    public int cdtj(Permission permission){
+        String pisnavi = permission.getPisnavi().equals("-1")?"0":permission.getPisnavi().equals("0")?"1":permission.getPisnavi().equals("1")?"2":"";
+        permission.setPisnavi(pisnavi);
+        int add = permissionService.Add(permission);
+        return add;
+    }
+
+    @RequestMapping("updatecheck.action")
+    @ResponseBody
+    public Permission updatecheck(Permission permission){
+        Permission updateAll = permissionService.updateAll(permission);
+        return updateAll;
+    }
+    @RequestMapping("updateList.action")
+    @ResponseBody
+    public List<Permission> updateList(Permission permission){
+        List<Permission>updateAll = permissionService.updateList(permission);
+        return updateAll;
+    }
+
+    @RequestMapping("qxupdate.action")
+    @ResponseBody
+    public Boolean qxupdate(Permission permission){
+        return permissionService.qxupdate(permission);
     }
 }
