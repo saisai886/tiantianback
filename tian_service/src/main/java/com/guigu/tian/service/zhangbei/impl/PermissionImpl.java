@@ -77,7 +77,7 @@ public class PermissionImpl extends ServiceImpl<Zb_PermissonMapper, Permission>
                 per.setPermissionss(list1);
             }
         }
-        PageInfo<Permission> pageInfo = new PageInfo<>(permissionList);
+        PageInfo<Permission> pageInfo = new PageInfo<Permission>(permissionList);
         return pageInfo;
     }
 
@@ -93,7 +93,7 @@ public class PermissionImpl extends ServiceImpl<Zb_PermissonMapper, Permission>
 
     @Override
     public List<Permission> pisnaviAll(String pisnavi) {
-        QueryWrapper<Permission> wrapper = new QueryWrapper<>();
+        QueryWrapper<Permission> wrapper = new QueryWrapper<Permission>();
         wrapper.eq("pisnavi",pisnavi);
         List<Permission> list = this.list(wrapper);
         return list;

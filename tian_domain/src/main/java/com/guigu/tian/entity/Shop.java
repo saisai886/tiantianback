@@ -1,5 +1,6 @@
 package com.guigu.tian.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -12,7 +13,7 @@ import java.util.Date;
 @TableName("shop")
 public class Shop {
 
-    @TableId
+    @TableId(value = "sid",type = IdType.AUTO)
     private  Integer sid;
 
     private  String sname;
