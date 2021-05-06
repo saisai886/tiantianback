@@ -4,7 +4,6 @@ import com.guigu.tian.entity.Shop;
 
 public class MyShoplx extends Shop {
 
-
     private  String stname;
 
     private  Integer stpanentid;
