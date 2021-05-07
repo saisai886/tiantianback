@@ -23,7 +23,7 @@ public class XszShoppinglunServiceImpl extends ServiceImpl<XszShopPinglunMapper,
     public PageInfo<MyUserpinglun> selectbysid(Integer sid,Integer pageNo,Integer pageSize) {
         PageHelper.startPage(pageNo,pageSize);
         List<MyUserpinglun> list = shopPinglunMapper.selectbysid(sid);
-        PageInfo<MyUserpinglun> page=new PageInfo<>(list);
+        PageInfo<MyUserpinglun> page=new PageInfo<MyUserpinglun>(list);
         return page;
     }
 }

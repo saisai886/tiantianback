@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.guigu.tian.mapper.hesijie.Hsj_DingDangMapper" >
+                <select id="queryAll" parameterType="com.guigu.tian.entity.MyHsj_UserDingDangs" resultType="com.guigu.tian.entity.MyHsj_UserDingDangs">
+                    SELECT
+                    sh.shid shid,
+                    sh.shname shname,
+                    sh.shaddr shaddr,
+                    udd.uddid uddid,
+                    udd.ucount ucount,
+                    udd.udddingdan udddingdan,
+                    udd.udspricesum udspricesum,
+                    udd.uzhuangtai uzhuangtai,
+                    udd.udtime udtime,
+                    udd.udfahuotime udfahuotime,
+                    udd.uddaititime uddaititime,
+                    udd.udendtime udendtime,
+                    utd.udname udname,
+                    utd.udphone udphone,
+                    sp.sprice sprice,
+                    sp.sname sname,
+                    sp.sbeizhu sbeizhu,
+                    sp.simg simg
+                    FROM shanghu sh
+                    INNER JOIN userdingdan udd
+                    ON sh.shid=udd.shid
+                    INNER JOIN userdtails utd
+                    ON utd.uid=udd.uid
+                    INNER JOIN shop sp
+                    ON sp.sid=udd.sid
+                    <where>
+                        <if test="shid!=0">
+                            and   sh.shid= #{shid}
+                        </if>
+                        <if test="udname!=null and udname!=''">
+                            and udname like concat('%',#{udname},'%')
+                        </if>
+                        <if test="uzhuangtai2!=null and uzhuangtai2!=''">
+                            and udd.uzhuangtai =#{uzhuangtai2}
+                        </if>
+
+                        and udd.uzhuangtai !=#{uzhuangtai}
+                    </where>
+                </select>
+
+                 <update id="updateUserDingdang" parameterType="int">
+                        update userdingdan set uzhuangtai = 'f004-1',uddaititime = now() where uddid = #{uddid}
+                 </update>
+</mapper>

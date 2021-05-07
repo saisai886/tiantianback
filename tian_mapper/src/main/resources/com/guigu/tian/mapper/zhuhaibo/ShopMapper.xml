@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.guigu.tian.mapper.zhuhaibo.ShopMapper" >
+
+
+    <select id="All" resultType="com.guigu.tian.entity.zhuhaibo.MyShoplx" parameterType="com.guigu.tian.entity.zhuhaibo.MyShoplx">
+   SELECT * FROM shop LEFT JOIN shoptype ON shop.`stid`=shoptype.`stid`
+    </select>
+</mapper>
+
+
