@@ -22,4 +22,5 @@ public interface PermissionService extends IService<Permission> {
     List<Permission> updateList(Permission permission);
 
     Boolean qxupdate(Permission permission);
+
 }

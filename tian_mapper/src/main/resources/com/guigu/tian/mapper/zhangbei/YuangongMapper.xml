@@ -4,4 +4,8 @@
      <select id="yuanggodenglu" resultType="com.guigu.tian.entity.Yuangong" parameterType="com.guigu.tian.entity.Yuangong">
         SELECT * FROM yuangong WHERE yloginname=#{yloginname} AND ygpwd=#{ygpwd}
      </select>
+
+    <select id="yuangoAll" resultType="com.guigu.tian.entity.Yuangong">
+          SELECT * FROM `yuangong` WHERE ygzhuangtai != 'a004'
+    </select>
 </mapper>
