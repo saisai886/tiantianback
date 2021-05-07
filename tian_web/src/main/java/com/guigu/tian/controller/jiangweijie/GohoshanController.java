@@ -61,7 +61,6 @@ public class GohoshanController {
         System.out.println(shop);
         shop.setGid(1); //外键id
         int goninsert = gohsService.goninsert(shop);
-
             return "";
     }
 

@@ -32,5 +32,10 @@ public class Caigou {
    private Date   cgshentime;
    //采购人
     private int   ygid;
-
+    //供货商审核状态(已审核 cg001,未审核 cg002,待审核 cg003)
+   private String  cgghszhuangtai;
+    //采购的 公司名
+    private String cgcorporate;
+    //商城收货地址
+    private String cgaddress;
 }

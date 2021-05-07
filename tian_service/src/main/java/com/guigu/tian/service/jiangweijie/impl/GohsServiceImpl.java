@@ -20,7 +20,7 @@ public class GohsServiceImpl extends ServiceImpl<GhshanMapper, Gongyingshop> imp
 
 
     @Override
-    public PageInfo<Gongyingshop> selectList(String name,int pageNo, int pageSize) {
+    public PageInfo<Gongyingshop> selectList(String  name,int pageNo, int pageSize) {
         PageHelper.startPage(pageNo,pageSize);
         List<Gongyingshop> gongyingshops = ghshanMapper.selectList(name);
         PageInfo<Gongyingshop> pageInfo=new PageInfo<Gongyingshop>(gongyingshops);
