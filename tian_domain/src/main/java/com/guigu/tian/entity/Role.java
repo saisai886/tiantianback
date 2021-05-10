@@ -1,6 +1,7 @@
 package com.guigu.tian.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
@@ -18,6 +19,7 @@ public class Role {
    private String rdesc;
     // 角色代码
    private  String rcode;
+
 
 
 
