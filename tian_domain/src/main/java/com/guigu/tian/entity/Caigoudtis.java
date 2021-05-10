@@ -20,5 +20,8 @@ public class Caigoudtis {
     private int cdcoun;
    //小计
     private int cdxiaoji;
-
+    //状态
+    private String Cdzhuangtai;
+    //详细表
+    private  String cdminute;
 }

@@ -2,10 +2,10 @@ package com.guigu.tian.controller.jiangweijie;
 
 import com.github.pagehelper.PageInfo;
 import com.guigu.tian.entity.Caigou;
+import com.guigu.tian.entity.Caigoudtis;
 import com.guigu.tian.entity.jiangweijie.Supcaigou;
 import com.guigu.tian.entity.jiangweijie.Supcaigousp;
 import com.guigu.tian.service.jiangweijie.GohscaigoService;
-import com.guigu.tian.service.jiangweijie.impl.GohscaigoServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -69,6 +69,58 @@ public class GocaigoController {
     }
 
 
+    @RequestMapping("supupdataid")
+    @ResponseBody
+    public void supupdataid(int gsid){
+        int cd001 = gohscaigoService.supupdataId(gsid);
+    }
+
+
+    @RequestMapping("supupdataidNO")
+    @ResponseBody
+    public void supupdataidNo(int gsid){
+        int cd003 = gohscaigoService.supupdataIdNo(gsid);
+    }
+
+
+
+    @RequestMapping("Supsum")
+    @ResponseBody
+    public int Supsum(int id,String textarea){
+
+        int supzo = gohscaigoService.SupZtSum(id);
+        int supyes = gohscaigoService.SupZtSumYes();
+
+        Caigou gou=new Caigou();
+        gou.setCgid(id);
+
+        if(supyes<supzo){
+            gou.setCgghszhuangtai("cg003");
+            int i = gohscaigoService.SupupdateZtai(gou);//改变商城采购单
+        }else{
+            gou.setCgghszhuangtai("cg001");
+            int ii = gohscaigoService.SupupdateZtai(gou);//改变商城采购单
+        }
+
+        List<Supcaigou> supcaigous = gohscaigoService.SupCount(id);
+
+
+        Caigoudtis dtis=new Caigoudtis();
+
+        for(Supcaigou sup:supcaigous){
+          Float price=sup.getCdcoun()*sup.getGsprice(); //计算小计
+            int i = price.intValue();
+            dtis.setCdxiaoji(i);
+            dtis.setGsid(sup.getGsid());
+            gohscaigoService.SupCountupdate(dtis);
+        }
+
+        gou.setCgminout(textarea);
+        gohscaigoService.SupMinOut(gou); //update添加意外说明
+
+
+        return 1;
+    }
 
 
 }

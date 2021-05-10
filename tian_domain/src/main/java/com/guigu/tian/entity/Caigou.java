@@ -38,4 +38,6 @@ public class Caigou {
     private String cgcorporate;
     //商城收货地址
     private String cgaddress;
+    //供货商所详细表
+    private String cgminout;
 }
