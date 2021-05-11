@@ -40,4 +40,6 @@ public class Caigou {
     private String cgaddress;
     //供货商所详细表
     private String cgminout;
+    //出库表
+    private  String cgchuku;
 }
