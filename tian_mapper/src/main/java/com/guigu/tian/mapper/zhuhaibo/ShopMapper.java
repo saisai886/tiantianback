@@ -8,5 +8,9 @@ import com.guigu.tian.entity.zhuhaibo.MyShoplx;
 import java.util.List;
 
 public interface ShopMapper extends BaseMapper<Shop> {
+
     List<MyShoplx> All(MyShoplx myShoplx);
+
+
+
 }

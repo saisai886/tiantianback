@@ -32,7 +32,6 @@ public class GohoshanController {
     @ResponseBody
     public Gongyingshop safeguardcx(int id){
         Gongyingshop byId = gohsService.getById(id);
-
         return byId;
     }
 

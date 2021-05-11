@@ -22,6 +22,16 @@ public class Shoptype {
       @TableField(exist = false)
       List<Shoptype> childrenshoptype;
 
+    @TableField(exist = false)
+    private Integer  value;
+
+    @TableField(exist = false)
+    private String  label;
+
+    @TableField(exist = false)
+    List<Shoptype> children;
+
+
 
 
 }
