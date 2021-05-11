@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.guigu.tian.mapper.jiangweijie.GhshanMapper" >
+
+    <select id="selectList" resultType="com.guigu.tian.entity.Gongyingshop" parameterType="com.guigu.tian.entity.jiangweijie.Supchanxu">
+        select * from gongyingshop where 1=1
+        <if test="name!=null and name!=''">
+            and gsname like CONCAT(CONCAT('%', #{name}), '%')
+        </if>
+
+    </select>
+
+
+    <update id="Ghshanupdate" parameterType="com.guigu.tian.entity.Gongyingchuku">
+        UPDATE gongyingshop SET gsname=#{gsname},gsprice=#{gsprice},gscount=#{gscount},gsmiaoshu=#{gsmiaoshu},gsimg=#{gsimg},gschandi=#{gschandi},gstime=#{gstime},gsbozhi=#{gsbozhi},gschengben=#{gschengben} WHERE gsid=#{gsid}
+    </update>
+
+    <insert id="Ghshaninsert" parameterType="com.guigu.tian.entity.Gongyingchuku">
+        insert into gongyingshop values(default,#{gid},#{gsname},#{gsprice},#{gscount},#{gsmiaoshu},#{gsimg},#{gschandi},#{gstime},#{gsbozhi},#{gschengben})
+    </insert>
+
+    <delete id="Ghshangchu">
+        DELETE FROM gongyingshop WHERE gsid=#{gsid}
+    </delete>
+</mapper>

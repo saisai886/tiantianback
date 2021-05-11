@@ -27,7 +27,8 @@
     <!--由Spring容器创建SqlSessionFacctoryBean-->
     <bean id="sessionFactoryBean" class="com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"></property>
-        <!--分页插件-->
+        <property name="configLocation" value="classpath:mybatis-config.xml"></property>
+         <!--分页插件-->
         <property name="plugins">
             <array>
                 <bean class="com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor"></bean>
@@ -50,7 +51,9 @@
 
 
     <!--改为注解模式-->
-     <context:component-scan base-package="com"></context:component-scan>
+     <context:component-scan base-package="com">
+         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+     </context:component-scan>
 
 
     <!--=================以下是事务注解的相关配置==========-->

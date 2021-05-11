@@ -44,4 +44,7 @@ public class Userdingdan {
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
    private Date udendtime;
+
+//    订单总价格
+    private Float udspricesum;
 }

@@ -51,6 +51,7 @@ public class XszShopController {
     @ResponseBody
     public  Shop selectbysid(Integer sid){
         Shop shop = shopService.getById(sid);
+
         return  shop;
     }
 

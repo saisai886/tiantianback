@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.guigu.tian.mapper.jiangweijie.GhshangCaigouMapper" >
+
+<!--    <resultMap id="BaseResultMap" type="com.guigu.erp.pojo.d_config_file_kind" >-->
+<!--        <id column="ID" property="ID" jdbcType="INTEGER" />-->
+<!--        <result column="P_ID" property="p_ID" jdbcType="DECIMAL" />-->
+<!--        <result column="KIND_ID" property="KIND_ID" jdbcType="VARCHAR" />-->
+<!--        <result column="KIND_NAME" property="KIND_NAME" jdbcType="VARCHAR" />-->
+<!--        <result column="KIND_LEVEL" property="KIND_LEVEL" jdbcType="DECIMAL" />-->
+<!--    </resultMap>-->
+    <select id="selectListAll" resultType="com.guigu.tian.entity.Caigou" parameterType="com.guigu.tian.entity.jiangweijie.Supchanxu">
+        select * from caigou WHERE cgzhuangtai='c001' AND cgghszhuangtai='cg002'
+        <if test="name!=null and name!=''">
+            and cgdan like concat(concat('%', #{name}), '%')
+        </if>
+    </select>
+
+    <select id="selectListAllId" resultType="com.guigu.tian.entity.jiangweijie.Supcaigousp" parameterType="com.guigu.tian.entity.jiangweijie.Supcaigousp">
+        SELECT * FROM caigoudtis INNER JOIN gongyingshop ON  caigoudtis.`gsid`=gongyingshop.`gsid`
+        WHERE caigoudtis.`cgid`=#{cgid}
+
+    </select>
+
+
+    <!--三表连接查询-->
+    <select id="selectcaigou" parameterType="com.guigu.tian.entity.jiangweijie.Supchanxu" resultType="com.guigu.tian.entity.jiangweijie.Supcaigou">
+        SELECT * FROM caigou INNER JOIN caigoudtis ON
+            caigou.`cgid`=caigoudtis.`cgid`
+             INNER JOIN gongyingshop ON
+            caigoudtis.`gsid`=gongyingshop.`gsid`
+        WHERE cgzhuangtai='c001' AND cgghszhuangtai='cg002'
+        <if test="name!=null and name!=''">
+            and cgdan like concat(concat('%', #{name}), '%')
+        </if>
+
+    </select>
+
+    <select id="selectcaigoid" resultType="com.guigu.tian.entity.jiangweijie.Supcaigou" parameterType="com.guigu.tian.entity.jiangweijie.Supcaigou">
+        SELECT * FROM caigou INNER JOIN caigoudtis ON
+            caigou.`cgid`=caigoudtis.`cgid`
+                             INNER JOIN gongyingshop ON
+            caigoudtis.`gsid`=gongyingshop.`gsid`
+        WHERE cgzhuangtai='c001' AND cgghszhuangtai='cg002' and caigou.cgid=#{cgid}
+    </select>
+
+    <update id="supupdataId" parameterType="com.guigu.tian.entity.Caigoudtis">
+        UPDATE caigoudtis SET cdzhuangtai="cd001" WHERE gsid=#{gsid}
+    </update>
+
+    <update id="supupdataIdNo" parameterType="com.guigu.tian.entity.Caigoudtis">
+        UPDATE caigoudtis SET cdzhuangtai="cd003" WHERE gsid=#{gsid}
+    </update>
+
+    <!--查询商品的状态是否是审核通过-->
+    <select id="SupZtSum" resultType="java.lang.Integer" parameterType="com.guigu.tian.entity.Caigoudtis">
+        SELECT COUNT(*)  FROM caigoudtis WHERE cgid=#{cgid}
+    </select>
+
+    <select id="SupZtSumYes" resultType="java.lang.Integer" parameterType="com.guigu.tian.entity.Caigoudtis">
+        SELECT COUNT(cdzhuangtai) FROM caigoudtis WHERE cdzhuangtai='cd001'
+    </select>
+
+    <update id="SupupdateZtai" parameterType="com.guigu.tian.entity.Caigou">
+        UPDATE caigou SET cgghszhuangtai=#{cgghszhuangtai} WHERE cgid=#{cgid}
+    </update>
+
+    <!--计算-->
+    <select id="SupCount"  parameterType="com.guigu.tian.entity.jiangweijie.Supcaigou" resultType="com.guigu.tian.entity.jiangweijie.Supcaigou">
+        SELECT  caigoudtis.`gsid`,caigoudtis.`cdcoun`,gongyingshop.`gsprice`  FROM caigoudtis INNER JOIN gongyingshop ON caigoudtis.`gsid`=gongyingshop.`gsid`
+        WHERE cgid=#{cgid} and cdzhuangtai="cd001"
+    </select>
+
+    <update id="SupCountupdate" parameterType="com.guigu.tian.entity.jiangweijie.Supcaigou">
+        UPDATE caigoudtis SET cdxiaoji=#{cdxiaoji}  WHERE gsid=#{gsid}
+    </update>
+    
+    <!--添加供货商所要的说明意外情况-->
+        <update id="SupMinOut" parameterType="com.guigu.tian.entity.Caigou">
+            UPDATE caigou SET cgminout=#{cgminout} WHERE cgid=#{cgid}
+        </update>
+</mapper>
