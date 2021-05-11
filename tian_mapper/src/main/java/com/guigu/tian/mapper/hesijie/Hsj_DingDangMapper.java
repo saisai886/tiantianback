@@ -15,6 +15,4 @@ public interface Hsj_DingDangMapper extends BaseMapper<Userdingdan> {
 
 
 
-
-
 }

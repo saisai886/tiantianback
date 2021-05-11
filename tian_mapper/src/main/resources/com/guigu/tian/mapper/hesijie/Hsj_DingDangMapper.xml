@@ -6,6 +6,7 @@
                     sh.shid shid,
                     sh.shname shname,
                     sh.shaddr shaddr,
+                    udd.shid shid,
                     udd.uddid uddid,
                     udd.ucount ucount,
                     udd.udddingdan udddingdan,
@@ -30,7 +31,7 @@
                     ON sp.sid=udd.sid
                     <where>
                         <if test="shid!=0">
-                            and   sh.shid= #{shid}
+                            and   udd.shid= #{shid}
                         </if>
                         <if test="udname!=null and udname!=''">
                             and udname like concat('%',#{udname},'%')

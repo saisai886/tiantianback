@@ -1,11 +1,8 @@
 package com.guigu.tian.controller.hesijie;
 
 
-import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.github.pagehelper.PageInfo;
 import com.guigu.tian.entity.MyHsj_UserDingDangs;
-import com.guigu.tian.entity.Userdingdan;
 import com.guigu.tian.service.hesijie.Hsj_DingDangService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,8 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Controller
 @CrossOrigin
@@ -71,6 +67,15 @@ public class Hsj_ShanHuController {
           PageInfo<MyHsj_UserDingDangs> pageInfo = hsj_dingDangService.queryAll(myHsj_userDingDangs, pageNo, pageSize);
           return pageInfo;
      }
+
+     @RequestMapping("yingyeliruen")
+     @ResponseBody
+    public List<Long> yingyeliruen(){
+         List<Long> longs = hsj_dingDangService.shopSprice();
+         return longs;
+     }
+
+
 
 
 
