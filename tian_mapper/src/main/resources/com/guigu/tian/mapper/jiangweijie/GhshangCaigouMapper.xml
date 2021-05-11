@@ -44,7 +44,39 @@
         WHERE cgzhuangtai='c001' AND cgghszhuangtai='cg002' and caigou.cgid=#{cgid}
     </select>
 
+    <update id="supupdataId" parameterType="com.guigu.tian.entity.Caigoudtis">
+        UPDATE caigoudtis SET cdzhuangtai="cd001" WHERE gsid=#{gsid}
+    </update>
 
+    <update id="supupdataIdNo" parameterType="com.guigu.tian.entity.Caigoudtis">
+        UPDATE caigoudtis SET cdzhuangtai="cd003" WHERE gsid=#{gsid}
+    </update>
 
+    <!--查询商品的状态是否是审核通过-->
+    <select id="SupZtSum" resultType="java.lang.Integer" parameterType="com.guigu.tian.entity.Caigoudtis">
+        SELECT COUNT(*)  FROM caigoudtis WHERE cgid=#{cgid}
+    </select>
 
+    <select id="SupZtSumYes" resultType="java.lang.Integer" parameterType="com.guigu.tian.entity.Caigoudtis">
+        SELECT COUNT(cdzhuangtai) FROM caigoudtis WHERE cdzhuangtai='cd001'
+    </select>
+
+    <update id="SupupdateZtai" parameterType="com.guigu.tian.entity.Caigou">
+        UPDATE caigou SET cgghszhuangtai=#{cgghszhuangtai} WHERE cgid=#{cgid}
+    </update>
+
+    <!--计算-->
+    <select id="SupCount"  parameterType="com.guigu.tian.entity.jiangweijie.Supcaigou" resultType="com.guigu.tian.entity.jiangweijie.Supcaigou">
+        SELECT  caigoudtis.`gsid`,caigoudtis.`cdcoun`,gongyingshop.`gsprice`  FROM caigoudtis INNER JOIN gongyingshop ON caigoudtis.`gsid`=gongyingshop.`gsid`
+        WHERE cgid=#{cgid} and cdzhuangtai="cd001"
+    </select>
+
+    <update id="SupCountupdate" parameterType="com.guigu.tian.entity.jiangweijie.Supcaigou">
+        UPDATE caigoudtis SET cdxiaoji=#{cdxiaoji}  WHERE gsid=#{gsid}
+    </update>
+    
+    <!--添加供货商所要的说明意外情况-->
+        <update id="SupMinOut" parameterType="com.guigu.tian.entity.Caigou">
+            UPDATE caigou SET cgminout=#{cgminout} WHERE cgid=#{cgid}
+        </update>
 </mapper>

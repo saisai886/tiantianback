@@ -40,16 +40,6 @@ public class Supcaigousp extends Gongyingshop {
         this.cdcoun = cdcoun;
     }
 
-    @Override
-    public String toString() {
-        return "Supcaigousp{" +
-                "cgid=" + cgid +
-                ", cdxiaoji='" + cdxiaoji + '\'' +
-                ", cdzhuangtai='" + cdzhuangtai + '\'' +
-                ", cdcoun=" + cdcoun +
-                '}';
-    }
-
     public Supcaigousp() {
     }
 
@@ -58,5 +48,15 @@ public class Supcaigousp extends Gongyingshop {
         this.cdxiaoji = cdxiaoji;
         this.cdzhuangtai = cdzhuangtai;
         this.cdcoun = cdcoun;
+    }
+
+    @Override
+    public String toString() {
+        return "Supcaigousp{" +
+                "cgid=" + cgid +
+                ", cdxiaoji='" + cdxiaoji + '\'' +
+                ", cdzhuangtai='" + cdzhuangtai + '\'' +
+                ", cdcoun=" + cdcoun +
+                '}';
     }
 }
