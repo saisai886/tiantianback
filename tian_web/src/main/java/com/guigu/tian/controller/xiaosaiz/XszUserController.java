@@ -45,7 +45,7 @@ private XszUserService userService;
             Md5Hash md5=new Md5Hash(user.getUpawssword(),"555"); //加密
             String s = md5.toString();
             user.setUpawssword(s);
-
+            user.setUpdomestic("普通用户");
             userService.save(user); //添加用户
             return true;
         }
