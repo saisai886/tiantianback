@@ -6,6 +6,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.guigu.tian.entity.MyHsj_UserDingDangs;
 import com.guigu.tian.entity.Userdingdan;
+import com.guigu.tian.entity.hesijie.Shanghu;
 import com.guigu.tian.mapper.hesijie.Hsj_DingDangMapper;
 import com.guigu.tian.service.hesijie.Hsj_DingDangService;
 
@@ -38,13 +39,13 @@ public class Hsj_DingDangServiceImpl extends ServiceImpl<Hsj_DingDangMapper, Use
 
         @Override
         public List<Long> shopSprice(int uid) {
+                Shanghu shanghu = hsj_dingDangMapper.queryId(uid);
                 QueryWrapper<Userdingdan> wrapper=new QueryWrapper<Userdingdan>();
-                wrapper.eq("uid",uid);
+                wrapper.eq("shid",shanghu.getShid());
                 wrapper.lt("udtime", "2021-12-31");
                 wrapper.gt("udtime","2021-1-31");
                 Integer count = hsj_dingDangMapper.selectCount(wrapper);
                  Long sum= Long.valueOf(1*count);
-                System.out.println(sum);
                 List<Long> longs=new ArrayList<Long>();
                 longs.add(sum);
                 return longs;
