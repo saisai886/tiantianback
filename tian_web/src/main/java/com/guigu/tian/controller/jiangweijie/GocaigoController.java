@@ -68,7 +68,6 @@ public class GocaigoController {
         Supcaigou supcaigou = gohscaigoService.selectId(cgid);
         System.out.println(supcaigou);
 
-
         return supcaigou;
     }
 

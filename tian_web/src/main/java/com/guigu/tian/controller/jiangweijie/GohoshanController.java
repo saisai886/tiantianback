@@ -49,7 +49,6 @@ public class GohoshanController {
     @RequestMapping(value = "biangjixugai",produces = {"application/json;charset=utf-8"})
     @ResponseBody
     public String biangjixugai(Gongyingshop shop){
-
         int gonshsup = gohsService.gonshsup(shop);
 
         return "";
