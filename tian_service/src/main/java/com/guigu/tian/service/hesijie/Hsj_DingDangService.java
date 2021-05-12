@@ -16,7 +16,7 @@ public interface Hsj_DingDangService extends IService<Userdingdan> {
     int updateUserDingdang(int uddid);
 
 //           拿到当个商品的进货价格
-        List<Long> shopSprice();
+        List<Long> shopSprice(int uid);
 
 
 }

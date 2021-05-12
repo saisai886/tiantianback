@@ -24,7 +24,7 @@ public class Hsj_ShanHuController {
      @RequestMapping("dingdanshows")
      @ResponseBody
     public PageInfo<MyHsj_UserDingDangs> dingdanshows(MyHsj_UserDingDangs myHsj_userDingDangs,@RequestParam(defaultValue = "1")Integer pageNo, @RequestParam(defaultValue = "5") Integer pageSize){
-         myHsj_userDingDangs.setShid(2);
+         myHsj_userDingDangs.setUid(myHsj_userDingDangs.getUid());
          myHsj_userDingDangs.setUzhuangtai("f001");
           PageInfo<MyHsj_UserDingDangs> pageInfo = hsj_dingDangService.queryAll(myHsj_userDingDangs, pageNo, pageSize);
          return pageInfo;
@@ -33,7 +33,7 @@ public class Hsj_ShanHuController {
      @RequestMapping("daishouhuo")
      @ResponseBody
     public PageInfo<MyHsj_UserDingDangs> daishouhuo(MyHsj_UserDingDangs myHsj_userDingDangs,@RequestParam(defaultValue = "1")Integer pageNo, @RequestParam(defaultValue = "5") Integer pageSize){
-         myHsj_userDingDangs.setShid(2);
+         myHsj_userDingDangs.setUid(myHsj_userDingDangs.getUid());
          myHsj_userDingDangs.setUzhuangtai("f001");
          myHsj_userDingDangs.setUzhuangtai2("f004");
           PageInfo<MyHsj_UserDingDangs> pageInfo = hsj_dingDangService.queryAll(myHsj_userDingDangs, pageNo, pageSize);
@@ -51,7 +51,7 @@ public class Hsj_ShanHuController {
      @RequestMapping("daitihuo")
      @ResponseBody
     public PageInfo<MyHsj_UserDingDangs> daitihuo(MyHsj_UserDingDangs myHsj_userDingDangs,@RequestParam(defaultValue = "1")Integer pageNo, @RequestParam(defaultValue = "5") Integer pageSize){
-         myHsj_userDingDangs.setShid(2);
+         myHsj_userDingDangs.setUid(myHsj_userDingDangs.getUid());
          myHsj_userDingDangs.setUzhuangtai("f001");
          myHsj_userDingDangs.setUzhuangtai2("f004-1");
           PageInfo<MyHsj_UserDingDangs> pageInfo = hsj_dingDangService.queryAll(myHsj_userDingDangs, pageNo, pageSize);
@@ -61,7 +61,7 @@ public class Hsj_ShanHuController {
      @RequestMapping("yitihuo")
      @ResponseBody
     public PageInfo<MyHsj_UserDingDangs> yitihuo(MyHsj_UserDingDangs myHsj_userDingDangs,@RequestParam(defaultValue = "1")Integer pageNo, @RequestParam(defaultValue = "5") Integer pageSize){
-         myHsj_userDingDangs.setShid(2);
+         myHsj_userDingDangs.setUid(myHsj_userDingDangs.getUid());
          myHsj_userDingDangs.setUzhuangtai("f001");
          myHsj_userDingDangs.setUzhuangtai2("f005");
           PageInfo<MyHsj_UserDingDangs> pageInfo = hsj_dingDangService.queryAll(myHsj_userDingDangs, pageNo, pageSize);
@@ -70,8 +70,8 @@ public class Hsj_ShanHuController {
 
      @RequestMapping("yingyeliruen")
      @ResponseBody
-    public List<Long> yingyeliruen(){
-         List<Long> longs = hsj_dingDangService.shopSprice();
+    public List<Long> yingyeliruen(int uid){
+         List<Long> longs = hsj_dingDangService.shopSprice(uid);
          return longs;
      }
 

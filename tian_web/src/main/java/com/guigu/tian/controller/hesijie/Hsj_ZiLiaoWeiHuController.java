@@ -19,9 +19,9 @@ public class Hsj_ZiLiaoWeiHuController {
 
     @RequestMapping("ziliaoweihu")
     @ResponseBody
-    public Shanghu  ziliaoweihu(){
-        QueryWrapper<Shanghu> queryWrapper=new QueryWrapper<Shanghu> ();
-        queryWrapper.eq("uid",3);
+    public Shanghu  ziliaoweihu(int uid){
+         QueryWrapper<Shanghu> queryWrapper=new QueryWrapper<Shanghu> ();
+        queryWrapper.eq("uid",uid);
         Shanghu shanghu = hsj_ziLiaoWeiHuService.getOne(queryWrapper);
         return shanghu;
     }

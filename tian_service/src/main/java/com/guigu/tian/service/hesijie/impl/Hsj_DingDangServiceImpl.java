@@ -37,9 +37,9 @@ public class Hsj_DingDangServiceImpl extends ServiceImpl<Hsj_DingDangMapper, Use
         }
 
         @Override
-        public List<Long> shopSprice() {
+        public List<Long> shopSprice(int uid) {
                 QueryWrapper<Userdingdan> wrapper=new QueryWrapper<Userdingdan>();
-                wrapper.eq("shid",2);
+                wrapper.eq("uid",uid);
                 wrapper.lt("udtime", "2021-12-31");
                 wrapper.gt("udtime","2021-1-31");
                 Integer count = hsj_dingDangMapper.selectCount(wrapper);
