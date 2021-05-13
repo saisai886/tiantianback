@@ -9,4 +9,11 @@ import java.util.List;
 public interface UserdtailsMapper extends BaseMapper<Userdtails> {
 
     List<MyUserdtails> selectAllyh(MyUserdtails myUserdtails);
+
+    int scyh(int uid);
+//根据id查询
+    Userdtails selectID(int uid);
+
+//修改
+    int  xgUserdtails(Userdtails userdtails);
 }

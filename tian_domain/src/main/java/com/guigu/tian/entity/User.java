@@ -22,6 +22,7 @@ public class User {
     private String upsupplier;
     //商户
     private String upbusiness;
-
+    //用户状态
+     private String  userzhuangtai;
 
 }

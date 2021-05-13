@@ -1,5 +1,6 @@
 package com.guigu.tian.service.zhuhaibo.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -41,7 +42,24 @@ public class UserdtailsServiceimpl  extends
     }
 
     @Override
-    public int scyh(int udid) {
-        return userdtailsMapper.deleteById(udid);
+    public int scyhxx(int uid) {
+        QueryWrapper<Userdtails> wrapper = new QueryWrapper<Userdtails>();
+        wrapper.eq("uid",uid);
+        return this.baseMapper.delete(wrapper);
+    }
+
+    @Override
+    public int scyh(int uid) {
+        return userdtailsMapper.scyh(uid);
+    }
+
+    @Override
+    public Userdtails selectID(int uid) {
+        return userdtailsMapper.selectID(uid);
+    }
+
+    @Override
+    public int xgUserdtails(Userdtails userdtails) {
+        return userdtailsMapper.xgUserdtails(userdtails);
     }
 }

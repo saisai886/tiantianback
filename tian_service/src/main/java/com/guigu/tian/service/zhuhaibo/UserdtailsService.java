@@ -18,5 +18,13 @@ Userdtails selectId(int uid );
 int  xgyh(Userdtails userdtails );
 
 //删除
-int scyh(int udid);
+    int scyhxx(int uid);
+
+    int scyh(int uid);
+
+//根据id查询
+    Userdtails selectID(int uid);
+
+
+    int  xgUserdtails(Userdtails userdtails );
 }
