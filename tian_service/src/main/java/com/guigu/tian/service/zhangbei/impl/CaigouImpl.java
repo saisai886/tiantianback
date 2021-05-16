@@ -32,6 +32,7 @@ public class CaigouImpl extends ServiceImpl<CaigouMapper, Caigou> implements Cai
             caigou.setYgid(c.getYgid());
             caigou.setCgghszhuangtai("cg002");
             caigou.setCgcorporate(c.getCgcorporate());
+            caigou.setCgchuku("ck002");
             caigou.setCgaddress(c.getCgaddress());
         }
         this.baseMapper.insert(caigou);
