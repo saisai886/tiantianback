@@ -28,4 +28,30 @@ public class ShopServiceimpl extends ServiceImpl<ShopMapper, Shop> implements Sh
         PageInfo<MyShoplx> myShoplxPageInfo = new PageInfo<MyShoplx>(all);
         return myShoplxPageInfo;
     }
+
+    @Override
+    public int ShopAdd(Shop shop) {
+        int insert = shopMapper.insert(shop);
+        return insert;
+    }
+
+    @Override
+    public int scsp(int sid) {
+        int i = shopMapper.deleteById(sid);
+        return i;
+    }
+
+    @Override
+    public int xgsp(Shop shop) {
+        int i = shopMapper.updateById(shop);
+        return i;
+    }
+
+    @Override
+    public Shop selectId(int sid) {
+        return  shopMapper.selectById(sid);
+
+    }
+
+
 }

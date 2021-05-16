@@ -41,7 +41,8 @@ public class Caigou {
     private String cgaddress;
     //供货商所详细表
     private String cgminout;
-
+    //出库表
+    private  String cgchuku;
     //员工姓名
     @TableField(exist =false)
     private String yloginname;

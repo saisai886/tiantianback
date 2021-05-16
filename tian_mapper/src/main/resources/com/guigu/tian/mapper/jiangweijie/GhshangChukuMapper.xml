@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.guigu.tian.mapper.jiangweijie.GhshangChukuMapper" >
+
+    <select id="SupChuKu" resultType="com.guigu.tian.entity.Caigou" parameterType="com.guigu.tian.entity.jiangweijie.Supchanxu">
+        select * from caigou WHERE cgzhuangtai='c001' AND cgghszhuangtai='cg001' and cgchuku="ck002"
+        <if test="name!=null and name!=''">
+            and cgdan like concat(concat('%', #{name}), '%')
+        </if>
+    </select>
+
+
+    <select id="SupChuKujilui" resultType="com.guigu.tian.entity.Caigou" parameterType="com.guigu.tian.entity.jiangweijie.Supchanxu">
+        select * from caigou WHERE cgzhuangtai='c001' AND cgghszhuangtai='cg001' and cgchuku='ck001'
+        <if test="name!=null and name!=''">
+            and cgdan like concat(concat('%', #{name}), '%')
+        </if>
+    </select>
+
+
+</mapper>

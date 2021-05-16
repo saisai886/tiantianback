@@ -3,6 +3,7 @@ package com.guigu.tian.controller.jiangweijie;
 import com.github.pagehelper.PageInfo;
 import com.guigu.tian.entity.Caigou;
 import com.guigu.tian.entity.Caigoudtis;
+import com.guigu.tian.entity.Gongyingshop;
 import com.guigu.tian.entity.jiangweijie.Supcaigou;
 import com.guigu.tian.entity.jiangweijie.Supcaigousp;
 import com.guigu.tian.service.jiangweijie.GohscaigoService;
@@ -14,7 +15,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 @Controller
 @CrossOrigin
 @RequestMapping("/supcaigo")
@@ -63,7 +67,6 @@ public class GocaigoController {
     public Supcaigou selectID(int cgid){
         Supcaigou supcaigou = gohscaigoService.selectId(cgid);
         System.out.println(supcaigou);
-
 
         return supcaigou;
     }

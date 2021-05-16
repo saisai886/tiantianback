@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.guigu.tian.mapper.zhuhaibo.UserdtailsMapper" >
+
+
+    <select id="selectAllyh" resultType="com.guigu.tian.entity.zhuhaibo.MyUserdtails" parameterType="com.guigu.tian.entity.zhuhaibo.MyUserdtails">
+SELECT * FROM USER   INNER JOIN userdtails
+ WHERE user.`uid`=userdtails.`uid`
+    </select>
+
+    <delete id="scyh" parameterType="int">
+        DELETE FROM USER WHERE uid=#{uid}
+    </delete>
+
+    <select id="selectID" parameterType="com.guigu.tian.entity.Userdtails" resultType="com.guigu.tian.entity.Userdtails">
+        SELECT * FROM userdtails WHERE uid=#{uid}
+    </select>
+
+
+    <update id="xgUserdtails" parameterType="com.guigu.tian.entity.Userdtails">
+        UPDATE userdtails SET udname=#{udname},udaddr=#{udaddr},udimg=#{udimg},udsex=#{udsex},udmoney=#{udmoney},udpwd=#{udpwd} WHERE uid=#{uid}
+    </update>
+</mapper>

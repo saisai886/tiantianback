@@ -47,4 +47,8 @@ public class Userdingdan {
 
 //    订单总价格
     private Float udspricesum;
+
+
+
+
 }

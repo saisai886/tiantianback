@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.naming.ldap.PagedResultsControl;
 import java.util.Date;
@@ -25,7 +26,7 @@ public class Shop {
     private  Integer stid;
     private  Integer skucun;
 
-    @JsonFormat(pattern = "yyyy-MM-dd ")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date sbaozhitime;
 
     private String simg;

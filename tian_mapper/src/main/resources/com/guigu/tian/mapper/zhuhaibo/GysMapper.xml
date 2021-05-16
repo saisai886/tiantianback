@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.guigu.tian.mapper.zhuhaibo.GysMapper" >
+
+
+    <select id="Selectzt" resultType="com.guigu.tian.entity.Gongyingshang" parameterType="com.guigu.tian.entity.Gongyingshang" >
+         SELECT * FROM gongyingshang WHERE gzhuangtai='G002'
+    </select>
+
+    <select id="SelectCxzt" resultType="com.guigu.tian.entity.Gongyingshang" parameterType="com.guigu.tian.entity.Gongyingshang" >
+    SELECT * FROM gongyingshang WHERE gzhuangtai='G003'
+    </select>
+
+
+    <update id="xggys" parameterType="int">
+    UPDATE `gongyingshang` SET  gzhuangtai='G001'WHERE gid=#{gid}
+    </update>
+
+    <update id="xggyszt" parameterType="int">
+    UPDATE `gongyingshang` SET  gzhuangtai='G003'WHERE gid=#{gid}
+    </update>
+</mapper>

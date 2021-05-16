@@ -6,6 +6,8 @@
                     sh.shid shid,
                     sh.shname shname,
                     sh.shaddr shaddr,
+                    sh.uid uid,
+                    udd.shid shid,
                     udd.uddid uddid,
                     udd.ucount ucount,
                     udd.udddingdan udddingdan,
@@ -29,8 +31,8 @@
                     INNER JOIN shop sp
                     ON sp.sid=udd.sid
                     <where>
-                        <if test="shid!=0">
-                            and   sh.shid= #{shid}
+                        <if test="uid!=0">
+                            and   udd.uid= #{uid}
                         </if>
                         <if test="udname!=null and udname!=''">
                             and udname like concat('%',#{udname},'%')
@@ -38,7 +40,6 @@
                         <if test="uzhuangtai2!=null and uzhuangtai2!=''">
                             and udd.uzhuangtai =#{uzhuangtai2}
                         </if>
-
                         and udd.uzhuangtai !=#{uzhuangtai}
                     </where>
                 </select>

@@ -6,6 +6,7 @@
     <select id="All" resultType="com.guigu.tian.entity.zhuhaibo.MyShoplx" parameterType="com.guigu.tian.entity.zhuhaibo.MyShoplx">
    SELECT * FROM shop LEFT JOIN shoptype ON shop.`stid`=shoptype.`stid`
     </select>
+
 </mapper>
 
 

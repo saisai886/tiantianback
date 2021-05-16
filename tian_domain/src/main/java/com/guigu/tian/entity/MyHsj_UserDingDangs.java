@@ -9,6 +9,7 @@ import java.util.Date;
 @Data
 public class MyHsj_UserDingDangs {
              private int shid;
+             private int uid;
              private int uddid;
               private String shname;
               private String shaddr;

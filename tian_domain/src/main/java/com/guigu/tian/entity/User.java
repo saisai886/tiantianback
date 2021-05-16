@@ -16,5 +16,13 @@ public class User {
    private String uname;
    //密码
    private String upawssword;
+   //普通用户
+   private String updomestic;
+   //供货商
+    private String upsupplier;
+    //商户
+    private String upbusiness;
+    //用户状态
+     private String  userzhuangtai;
 
 }
