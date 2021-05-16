@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.guigu.tian.mapper.zhangbei.Zb_CaigoudtisMapper">
+    <select id="cggAll" resultType="com.guigu.tian.entity.zhangbei.Zb_caigoudtis_gongyingshop_gongyingshang" parameterType="java.lang.Integer">
+        SELECT c.*,gys.gname,gyssp.gsname FROM `caigoudtis` c
+        INNER JOIN `gongyingshop` gyssp
+        ON c.gsid = gyssp.gsid
+        INNER JOIN `gongyingshang` gys
+        ON gys.gid = gyssp.gid
+        WHERE c.cgid = #{cgid}
+    </select>
+
+    <update id="cgupdate" parameterType="com.guigu.tian.entity.Caigou">
+        update  caigou set cgzhuangtai = #{cgzhuangtai}
+                           ,cgshentime=#{cgshentime}
+        where cgid = #{cgid}
+    </update>
+</mapper>

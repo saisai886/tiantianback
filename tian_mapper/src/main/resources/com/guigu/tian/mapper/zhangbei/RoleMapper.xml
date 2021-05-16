@@ -4,4 +4,21 @@
      <select id="jsAll" resultType="com.guigu.tian.entity.Role" parameterType="java.lang.Integer">
          SELECT * FROM role
      </select>
+
+    <select id="ygjsAll" parameterType="java.lang.Integer" resultType="com.guigu.tian.entity.Role">
+        SELECT js.* FROM `yuangong` yg
+        INNER JOIN `userrole` jsyg
+        ON yg.`ygid` = jsyg.`ygid`
+        INNER JOIN role js
+        ON js.`rid` = jsyg.`rid`
+        WHERE yg.ygid = #{ygid}
+    </select>
+
+    <delete id="deletejs" parameterType="java.lang.Integer">
+        delete  from userrole where rid = #{rid}
+    </delete>
+
+    <delete id="deleteqx" parameterType="java.lang.Integer">
+        delete  from rolepermission where rid = #{rid}
+    </delete>
 </mapper>

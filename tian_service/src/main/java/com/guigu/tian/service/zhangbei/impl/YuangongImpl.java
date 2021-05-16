@@ -39,6 +39,7 @@ public class YuangongImpl extends ServiceImpl<YuangongMapper, Yuangong>
         Yuangong yuangong = new Yuangong();
         yuangong.setYgid(ygid);
         yuangong.setYgzhuangtai("a004");
+        int ygjsdelete = yuangongMapper.ygjsdelete(ygid);
         boolean b = this.updateById(yuangong);
         return b;
     }
@@ -61,6 +62,12 @@ public class YuangongImpl extends ServiceImpl<YuangongMapper, Yuangong>
     public int ygupdate(Yuangong yuangong) {
         int i = this.baseMapper.updateById(yuangong);
         return i;
+    }
+
+    @Override
+    public List<Yuangong> yglist() {
+        List<Yuangong> list = this.list();
+        return list;
     }
 
 

@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @Controller
 @CrossOrigin
@@ -57,5 +58,13 @@ public class YuangongController {
     public int ygupdate(Yuangong yuangong){
         int ygupdate = yuangongService.ygupdate(yuangong);
         return ygupdate;
+    }
+
+
+    @RequestMapping("yglist.action")
+    @ResponseBody
+    public List<Yuangong> yglist(){
+        List<Yuangong> yglist = yuangongService.yglist();
+        return yglist;
     }
 }

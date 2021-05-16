@@ -11,4 +11,8 @@ public interface Zb_PermissonMapper extends BaseMapper<Permission> {
     List<Permission> PermissionFYAll(Permission permission);
 
     void deleterolepermission(Permission permission);
+
+    List<Permission> qxjsAll(Permission permission);
+
+    int qxdelete(Integer pid);
 }

@@ -1,6 +1,7 @@
 package com.guigu.tian.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -40,4 +41,8 @@ public class Caigou {
     private String cgaddress;
     //供货商所详细表
     private String cgminout;
+
+    //员工姓名
+    @TableField(exist =false)
+    private String yloginname;
 }

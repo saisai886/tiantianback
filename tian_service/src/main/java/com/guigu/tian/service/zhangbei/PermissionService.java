@@ -23,4 +23,14 @@ public interface PermissionService extends IService<Permission> {
 
     Boolean qxupdate(Permission permission);
 
+    //授权
+    List<Permission> qxlist();
+
+    List<Permission> qxjsAll(Integer rid);
+
+
+
+
+
+
 }

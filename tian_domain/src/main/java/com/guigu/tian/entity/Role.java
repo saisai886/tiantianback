@@ -20,6 +20,10 @@ public class Role {
     // 角色代码
    private  String rcode;
 
+   //员工id
+    @TableField(exist =false)
+    private Integer ygid;
+
 
 
 
