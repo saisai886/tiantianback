@@ -8,4 +8,8 @@
     <select id="yuangoAll" resultType="com.guigu.tian.entity.Yuangong">
           SELECT * FROM `yuangong` WHERE ygzhuangtai != 'a004'
     </select>
+
+    <delete id="ygjsdelete" parameterType="java.lang.Integer">
+        delete from userrole where ygid = #{ygid}
+    </delete>
 </mapper>

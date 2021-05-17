@@ -43,8 +43,24 @@ public class Permission {
     @TableField(exist = false)
     private Integer ygid;
 
+    //角色id
+    @TableField(exist = false)
+    private Integer rid;
+
     //权限状态
     private String pstatus;
+
+
+    //授权字段
+    @TableField(exist =false)
+    private Integer id;
+
+    @TableField(exist =false)
+    private String  label;
+
+    @TableField(exist =false)
+    List<Permission> children;
+
 
 
 

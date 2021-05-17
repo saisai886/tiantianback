@@ -64,9 +64,21 @@ ON qx.`pid`= cd.`pid`
         ORDER BY qx.pid ASC
     </select>
 
-    <select id="deleterolepermission" parameterType="com.guigu.tian.mapper.zhangbei.Zb_PermissonMapper">
-       DELETE FROM rolepermission where pid =#{pid}
+
+
+
+    <select id="qxjsAll" parameterType="com.guigu.tian.entity.Permission" resultType="com.guigu.tian.entity.Permission">
+        SELECT qx.* FROM role r INNER JOIN `rolepermission` jsqx
+ON r.rid = jsqx.rid
+INNER JOIN permission qx
+ON qx.pid = jsqx.pid
+WHERE r.rid = #{rid}
     </select>
+
+
+    <delete id="qxdelete" parameterType="java.lang.Integer">
+        delete from rolepermission where pid = #{pid}
+    </delete>
 
 
 </mapper>

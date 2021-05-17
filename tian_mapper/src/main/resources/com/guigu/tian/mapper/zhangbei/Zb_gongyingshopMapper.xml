@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.guigu.tian.mapper.zhangbei.Zb_gongyingshopMapper" >
+    <select id="list" resultType="com.guigu.tian.entity.Gongyingshop" parameterType="java.lang.Integer">
+        SELECT * FROM `gongyingshop` WHERE gid = #{gid}
+    </select>
+
+    <select id="ghsname" resultType="com.guigu.tian.entity.Gongyingshang">
+        select * from gongyingshang
+    </select>
+</mapper>

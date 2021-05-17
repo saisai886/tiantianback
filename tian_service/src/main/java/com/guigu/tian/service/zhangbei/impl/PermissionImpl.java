@@ -10,6 +10,8 @@ import com.guigu.tian.service.zhangbei.PermissionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 @Service
@@ -87,7 +89,8 @@ public class PermissionImpl extends ServiceImpl<Zb_PermissonMapper, Permission>
         permission.setPid(pid);
         permission.setPstatus("1");//1表示已删除
         boolean b = this.updateById(permission);
-        zb_permissonMapper.deleterolepermission(permission);
+        int qxdelete = zb_permissonMapper.qxdelete(pid);
+        this.baseMapper.deleteById(pid);
         return b;
     }
 
@@ -126,5 +129,65 @@ public class PermissionImpl extends ServiceImpl<Zb_PermissonMapper, Permission>
     public Boolean qxupdate(Permission permission) {
         boolean b = this.updateById(permission);
         return b;
+    }
+
+    @Override
+    public List<Permission> qxlist() {
+        QueryWrapper<Permission> wrapper = new QueryWrapper<Permission>();
+        wrapper.eq("pisnavi",0);
+        wrapper.eq("pstatus","0");
+        //查出一级
+        List<Permission> list = this.list(wrapper);
+        for (Permission l:list) {
+            wrapper = new QueryWrapper<Permission>();
+            wrapper.eq("pisnavi",1);
+            wrapper.eq("pstatus","0");
+            wrapper.eq("parentid",l.getPid());
+            //查出二级
+            List<Permission> list1 = this.list(wrapper);
+            l.setId(l.getPid());
+            l.setLabel(l.getPermissionName());
+            l.setChildren(list1);
+
+            for (Permission li:list1) {
+                wrapper = new QueryWrapper<Permission>();
+                wrapper.eq("pisnavi",2);
+                wrapper.eq("pstatus","0");
+                wrapper.eq("parentid",li.getPid());
+                //查出三级
+                List<Permission> list2 = this.list(wrapper);
+                li.setId(li.getPid());
+                li.setLabel(li.getPermissionName());
+                li.setChildren(list2);
+
+                for (Permission lis:list2) {
+                    lis.setId(lis.getPid());
+                    lis.setLabel(lis.getPermissionName());
+                }
+
+            }
+
+        }
+        return list;
+    }
+
+    @Override
+    public List<Permission> qxjsAll(Integer rid) {
+        Permission permission = new Permission();
+        permission.setRid(rid);
+        List<Permission> qxjsAll = zb_permissonMapper.qxjsAll(permission);
+//        List<Permission> list=  new ArrayList<Permission>();
+//        list.addAll(qxjsAll);
+//        for (Permission s:qxjsAll) {
+//            for (Permission l:list) {
+//                if(l.getParentid()==s.getPid()){
+//                    list.remove(l);
+//                }
+//                if(l.getParentid()==0){
+//                    list.remove(l);
+//                }
+//            }
+//        }
+        return qxjsAll;
     }
 }
