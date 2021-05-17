@@ -96,6 +96,8 @@ public class GocaigoController {
 
         Caigou gou=new Caigou();
         gou.setCgid(id);
+        System.out.println(supzo+"===");
+        System.out.println(supyes+"===");
 
         if(supyes<supzo){
             gou.setCgghszhuangtai("cg003");

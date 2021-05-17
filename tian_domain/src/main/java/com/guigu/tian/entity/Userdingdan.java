@@ -17,7 +17,7 @@ public class Userdingdan {
     @TableId(value = "uddid",type = IdType.AUTO)
     private  int uddid;
     //外键	商品表外键*
-    private  int sid;
+   // private  int sid;
     //外键用户id*
     private  int uid;
     //订单号

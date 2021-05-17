@@ -15,6 +15,8 @@ public interface GhshangCaigouMapper extends BaseMapper<Supcaigou> {
     List<Supcaigousp> selectListAllId(int id);
 
 
+
+
     //三表连接
     List<Supcaigou> selectcaigou(String name);
 
