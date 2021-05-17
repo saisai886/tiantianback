@@ -33,6 +33,11 @@ public class GohscaigoServiceImpl extends ServiceImpl<GhshangCaigouMapper,Supcai
         return ghshangCaigouMapper.selectListAllId(id);
     }
 
+    @Override
+    public List<Supcaigousp> selectListAllIdchuku(int id) {
+        return ghshangCaigouMapper.selectListAllIdchuku(id);
+    }
+
 
     @Override
     public PageInfo<Supcaigou> selectAll(String name, int pageNo, int pageSize) {

@@ -45,7 +45,14 @@ public class GocaigoController {
 
         return caigou;
     }
+    @RequestMapping("selectListAllIdchuku")
+    @ResponseBody
+    public List<Supcaigousp> selectListAllIdchuku(int cgid){
 
+        List<Supcaigousp> caigou = gohscaigoService.selectListAllIdchuku(cgid);
+
+        return caigou;
+    }
 
 
 

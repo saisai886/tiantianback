@@ -18,7 +18,12 @@
 
     <select id="selectListAllId" resultType="com.guigu.tian.entity.jiangweijie.Supcaigousp" parameterType="com.guigu.tian.entity.jiangweijie.Supcaigousp">
         SELECT * FROM caigoudtis INNER JOIN gongyingshop ON  caigoudtis.`gsid`=gongyingshop.`gsid`
-        WHERE caigoudtis.`cgid`=#{cgid}
+        WHERE cdxxzhuangtai='cdxx001'  and caigoudtis.`cgid`=#{cgid}
+
+    </select>
+    <select id="selectListAllIdchuku" resultType="com.guigu.tian.entity.jiangweijie.Supcaigousp" parameterType="com.guigu.tian.entity.jiangweijie.Supcaigousp">
+        SELECT * FROM caigoudtis INNER JOIN gongyingshop ON  caigoudtis.`gsid`=gongyingshop.`gsid`
+        WHERE cdxxzhuangtai='cdxx001' and cdzhuangtai='cd001' and caigoudtis.`cgid`=#{cgid}
 
     </select>
 
@@ -54,11 +59,11 @@
 
     <!--查询商品的状态是否是审核通过-->
     <select id="SupZtSum" resultType="java.lang.Integer" parameterType="com.guigu.tian.entity.Caigoudtis">
-        SELECT COUNT(*)  FROM caigoudtis WHERE cgid=#{cgid}
+        SELECT COUNT(*)  FROM caigoudtis WHERE  cdxxzhuangtai='cdxx001' and cgid=#{cgid}
     </select>
 
     <select id="SupZtSumYes" resultType="java.lang.Integer" parameterType="com.guigu.tian.entity.Caigoudtis">
-        SELECT COUNT(cdzhuangtai) FROM caigoudtis WHERE cdzhuangtai='cd001'
+        SELECT COUNT(cdzhuangtai) FROM caigoudtis WHERE cdzhuangtai='cd001' and cdxxzhuangtai='cdxx001'
     </select>
 
     <update id="SupupdateZtai" parameterType="com.guigu.tian.entity.Caigou">
