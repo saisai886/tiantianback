@@ -44,7 +44,20 @@ public class RoleImpl extends ServiceImpl<RoleMapper, Role> implements RoleServi
 
     @Override
     public int jsdelete(Integer rid) {
+        int jsdelete = roleMapper.deletejs(rid);
+        int deleteqx = roleMapper.deleteqx(rid);
         int i = this.baseMapper.deleteById(rid);
         return i;
+    }
+
+    @Override
+    public List<Role> roleAll() {
+        return this.list();
+    }
+
+    @Override
+    public List<Role> ygjsAll(Integer ygid) {
+        List<Role> roles = roleMapper.ygjsAll(ygid);
+        return roles;
     }
 }

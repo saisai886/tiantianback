@@ -1,6 +1,7 @@
 package com.guigu.tian.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -40,5 +41,16 @@ public class Gongyingshop {
       private Date gsbozhi;
     //成本
       private Float gschengben;
+
+
+
+
+    //数量
+    @TableField(exist =false)
+    private Integer zb_num=1;
+
+    //小计
+    @TableField(exist =false)
+    private Integer zb_xj=0;
 
 }

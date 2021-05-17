@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.guigu.tian.mapper.zhangbei.RolepermissionMapper" >
+    <delete id="rpdelete" parameterType="java.lang.Integer">
+        delete from rolepermission where rid  = #{rid}
+    </delete>
+
+    <insert id="rpinsert" parameterType="com.guigu.tian.entity.Rolepermission">
+        insert into rolepermission values(default ,#{pid},#{rid})
+    </insert>
+
+</mapper>

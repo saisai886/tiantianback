@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
+
 @Controller
 @CrossOrigin
 @RequestMapping("js")
@@ -50,5 +52,18 @@ public class RoleController {
     public int jsdelete(Integer rid){
         int jsdelete = roleService.jsdelete(rid);
         return jsdelete;
+    }
+
+    @RequestMapping("roleAll.action")
+    @ResponseBody
+    public List<Role> roleAll(){
+        return roleService.roleAll();
+    }
+
+    @RequestMapping("ygjsAll.action")
+    @ResponseBody
+    public List<Role> ygjsAll(Integer ygid){
+        List<Role> roles = roleService.ygjsAll(ygid);
+        return roles;
     }
 }

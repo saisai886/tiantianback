@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.guigu.tian.mapper.zhuhaibo.ShanghuMapper" >
+
+
+    <select id="Selectzt" resultType="com.guigu.tian.entity.hesijie.Shanghu" parameterType="com.guigu.tian.entity.hesijie.Shanghu">
+          SELECT * FROM shanghu WHERE shzhuangtai='K002'
+    </select>
+
+
+    <select id="SelectCxzt" resultType="com.guigu.tian.entity.hesijie.Shanghu" parameterType="com.guigu.tian.entity.hesijie.Shanghu">
+     SELECT * FROM shanghu WHERE shzhuangtai='K003'
+    </select>
+
+
+    <update id="xgsh" parameterType="int">
+        UPDATE `shanghu` SET  shzhuangtai='K001'WHERE shid=#{shid}
+    </update>
+
+
+    <update id="xgshzt" parameterType="int">
+        UPDATE `shanghu` SET  shzhuangtai='K003'WHERE shid=#{shid}
+    </update>
+</mapper>

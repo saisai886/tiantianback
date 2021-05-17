@@ -75,4 +75,20 @@ public class PermissionController {
     public Boolean qxupdate(Permission permission){
         return permissionService.qxupdate(permission);
     }
+
+
+    @RequestMapping("sqAll.action")
+    @ResponseBody
+    public List<Permission> sqAll(){
+        List<Permission> qxlist = permissionService.qxlist();
+        return qxlist;
+    }
+
+    @RequestMapping("jsqxAll.action")
+    @ResponseBody
+    public List<Permission> jsqxAll(Integer rid){
+        List<Permission> qxjsAll = permissionService.qxjsAll(rid);
+        return qxjsAll;
+    }
+
 }

@@ -9,4 +9,6 @@ import java.util.List;
 public interface YuangongMapper extends BaseMapper<Yuangong> {
     Yuangong yuanggodenglu(Yuangong yuangong);
     List<Yuangong> yuangoAll();
+
+    int ygjsdelete(Integer ygid);
 }

@@ -5,6 +5,8 @@ import com.github.pagehelper.PageInfo;
 import com.guigu.tian.entity.Role;
 import com.guigu.tian.entity.Yuangong;
 
+import java.util.List;
+
 public interface RoleService extends IService<Role> {
     PageInfo<Role> jsAll(Integer pageNo,Integer pageSize);
 
@@ -15,5 +17,9 @@ public interface RoleService extends IService<Role> {
     Role jsupdateAll(Integer jsid);
 
     int jsdelete(Integer rid);
+
+    List<Role> roleAll();
+
+    List<Role> ygjsAll(Integer ygid);
 
 }

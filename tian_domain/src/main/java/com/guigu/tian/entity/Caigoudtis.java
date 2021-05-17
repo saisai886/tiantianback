@@ -24,4 +24,6 @@ public class Caigoudtis {
     private String Cdzhuangtai;
     //详细表
     private  String cdminute;
+
+    private String cdxxzhuangtai;
 }

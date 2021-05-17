@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.guigu.tian.mapper.zhangbei.CaigouMapper" >
+    <select id="cgpaixu" resultType="com.guigu.tian.entity.Caigou">
+        SELECT * FROM `caigou`  ORDER BY cgtime DESC LIMIT 1
+    </select>
+
+    <select id="huoquid" resultType="java.lang.Integer">
+        SELECT LAST_INSERT_ID() AS id
+    </select>
+
+    <select id="cgAll" resultType="com.guigu.tian.entity.Caigou">
+      SELECT cg.*,yg.yloginname FROM caigou cg INNER JOIN `yuangong`  yg ON cg.ygid = yg.ygid
+      WHERE cg.cgzhuangtai = 'c003'
+    </select>
+
+    <select id="cgjlAll" resultType="com.guigu.tian.entity.Caigou">
+      SELECT cg.*,yg.yloginname FROM caigou cg INNER JOIN `yuangong`  yg ON cg.ygid = yg.ygid
+     WHERE cg.cgzhuangtai = 'c003'
+    </select>
+
+    <select id="cgshjlAll" resultType="com.guigu.tian.entity.Caigou">
+     SELECT cg.*,yg.yloginname FROM caigou cg INNER JOIN `yuangong`  yg ON cg.ygid = yg.ygid
+     WHERE cg.cgzhuangtai != 'c003'
+    </select>
+
+</mapper>
