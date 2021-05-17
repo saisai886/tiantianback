@@ -1,6 +1,7 @@
 package com.guigu.tian.mapper.zhuhaibo;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.guigu.tian.entity.Gongyingshang;
 import com.guigu.tian.entity.hesijie.Shanghu;
 
 import java.util.List;
@@ -24,4 +25,12 @@ public interface ShanghuMapper extends BaseMapper<Shanghu> {
 
     //删除
     int deletesh(int shid);
+
+
+    //根据id查询
+    Shanghu selectId1(int shid);
+
+
+    //修改
+    int xgShanghu(Shanghu shanghu);
 }

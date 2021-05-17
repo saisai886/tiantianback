@@ -5,10 +5,7 @@ import com.guigu.tian.entity.hesijie.Shanghu;
 import com.guigu.tian.service.zhuhaibo.ShanghuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @CrossOrigin
@@ -67,4 +64,25 @@ public class ShanghuContriller {
         int deletesh = shanghuService.deletesh(shid);
         return deletesh;
     }
+
+
+
+    //根据id查询
+    @RequestMapping("SelectId.action")
+    @ResponseBody
+    public Shanghu SelectId(int shid){
+        Shanghu shanghu = shanghuService.SelectId(shid);
+        return shanghu;
+    }
+
+
+
+    //修改
+    @RequestMapping("XgShanghu.action")
+    @ResponseBody
+    public int XgShanghu(@RequestBody Shanghu  shanghu){
+        int i = shanghuService.xgShanghu(shanghu);
+        return i;
+    }
+
 }

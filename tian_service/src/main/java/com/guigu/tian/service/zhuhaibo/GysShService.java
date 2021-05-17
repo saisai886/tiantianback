@@ -23,7 +23,7 @@ public interface GysShService  extends IService<Gongyingshang> {
     //修改供应商状态为G003
     int xggyszt(int gid);
 
-//删除
+        //删除
     int deletegys(int gid);
 
 
