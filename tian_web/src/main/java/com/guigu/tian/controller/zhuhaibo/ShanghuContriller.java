@@ -59,4 +59,12 @@ public class ShanghuContriller {
         int xgshzt = shanghuService.xgshzt(shid);
         return xgshzt;
     }
+
+    //删除
+    @RequestMapping("deletesh.action")
+    @ResponseBody
+    public int deletesh(int shid){
+        int deletesh = shanghuService.deletesh(shid);
+        return deletesh;
+    }
 }

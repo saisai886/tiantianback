@@ -21,4 +21,7 @@ public interface ShanghuMapper extends BaseMapper<Shanghu> {
 
     //修改供应商状态为G003
     int xgshzt(int shid);
+
+    //删除
+    int deletesh(int shid);
 }

@@ -47,7 +47,7 @@ public class ShopController {
         @RequestMapping("Scsp.action")
         @ResponseBody
         public int Scsp(int sid){
-        int scsp = shopService.scsp(sid);
+        int scsp = shopService.deletesp(sid);
         return scsp;
     }
 

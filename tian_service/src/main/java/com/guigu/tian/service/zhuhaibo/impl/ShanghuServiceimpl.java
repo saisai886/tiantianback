@@ -46,4 +46,9 @@ public class ShanghuServiceimpl extends ServiceImpl<ShanghuMapper, Shanghu> impl
     public int xgshzt(int shid) {
         return shanghuMapper.xgshzt(shid);
     }
+
+    @Override
+    public int deletesh(int shid) {
+        return shanghuMapper.deletesh(shid);
+    }
 }

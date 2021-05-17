@@ -8,9 +8,9 @@ SELECT * FROM USER   INNER JOIN userdtails
  WHERE user.`uid`=userdtails.`uid`
     </select>
 
-    <delete id="scyh" parameterType="int">
-        DELETE FROM USER WHERE uid=#{uid}
-    </delete>
+    <update id="deleteyh" parameterType="int">
+      UPDATE USER SET userzhuangtai=0 WHERE uid=#{uid}
+    </update>
 
     <select id="selectID" parameterType="com.guigu.tian.entity.Userdtails" resultType="com.guigu.tian.entity.Userdtails">
         SELECT * FROM userdtails WHERE uid=#{uid}

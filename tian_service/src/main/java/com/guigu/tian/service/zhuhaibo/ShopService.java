@@ -17,7 +17,7 @@ public interface ShopService extends IService<Shop> {
     int ShopAdd(Shop shop);
 
     //删除商品
-    int scsp(int sid);
+    int deletesp(int sid );
 
     //修改商品
     int  xgsp(Shop shop);

@@ -9,7 +9,7 @@
 
 
     <select id="SelectCxzt" resultType="com.guigu.tian.entity.hesijie.Shanghu" parameterType="com.guigu.tian.entity.hesijie.Shanghu">
-     SELECT * FROM shanghu WHERE shzhuangtai='K003'
+     SELECT * FROM shanghu WHERE shzhuangtai='K003' OR shzhuangtai='K004'
     </select>
 
 
@@ -20,5 +20,11 @@
 
     <update id="xgshzt" parameterType="int">
         UPDATE `shanghu` SET  shzhuangtai='K003'WHERE shid=#{shid}
+    </update>
+
+
+
+    <update id="deletesh" parameterType="int">
+         UPDATE `shanghu` SET  shzhuangtai='K004'WHERE shid=#{shid}
     </update>
 </mapper>

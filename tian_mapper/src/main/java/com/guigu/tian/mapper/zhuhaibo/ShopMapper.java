@@ -1,5 +1,6 @@
 package com.guigu.tian.mapper.zhuhaibo;
 
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 import com.guigu.tian.entity.Shop;
@@ -12,5 +13,5 @@ public interface ShopMapper extends BaseMapper<Shop> {
     List<MyShoplx> All(MyShoplx myShoplx);
 
 
-
+    int deletesp(int sid );
 }

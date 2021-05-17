@@ -49,9 +49,8 @@ public class UserdtailsController {
     @RequestMapping("scyh.action")
     @ResponseBody
      public int scyh(int uid){
-        int scyhxx = userdtailsService.scyhxx(uid);
         int scyh = userdtailsService.scyh(uid);
-        return scyhxx;
+        return scyh;
     }
 
 }

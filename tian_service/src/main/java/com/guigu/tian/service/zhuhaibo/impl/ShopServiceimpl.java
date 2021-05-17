@@ -36,8 +36,8 @@ public class ShopServiceimpl extends ServiceImpl<ShopMapper, Shop> implements Sh
     }
 
     @Override
-    public int scsp(int sid) {
-        int i = shopMapper.deleteById(sid);
+    public int deletesp(int sid) {
+        int i = shopMapper.deletesp(sid);
         return i;
     }
 
