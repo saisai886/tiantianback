@@ -2,7 +2,11 @@ package com.guigu.tian.service.zhuhaibo.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.guigu.tian.entity.Shoptype;
+import com.guigu.tian.entity.zhuhaibo.MyShoplx;
+import com.guigu.tian.entity.zhuhaibo.MyUserdtails;
 import com.guigu.tian.mapper.zhuhaibo.ShopLxMapper;
 import com.guigu.tian.service.zhuhaibo.ShopService;
 import com.guigu.tian.service.zhuhaibo.ShoptypeService;
@@ -44,5 +48,13 @@ public class  ShoptypeServiceimpl extends ServiceImpl<ShopLxMapper, Shoptype> im
     public Shoptype spid(Integer stid) {
         Shoptype shoptype = this.baseMapper.selectById(stid);
         return shoptype;
+    }
+
+    @Override
+    public PageInfo<Shoptype> All(Shoptype shoptype, Integer pageNo, Integer pageSize) {
+        PageHelper.startPage(pageNo,pageSize);
+        List<Shoptype> all = shopLxMapper.All(shoptype);
+        PageInfo<Shoptype> shoptypePageInfo = new PageInfo<Shoptype>(all);
+        return shoptypePageInfo;
     }
 }

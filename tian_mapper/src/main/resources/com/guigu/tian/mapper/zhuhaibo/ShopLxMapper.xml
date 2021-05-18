@@ -6,4 +6,9 @@
     <select id="cxyjid" parameterType="com.guigu.tian.entity.Shoptype" resultType="com.guigu.tian.entity.Shoptype">
         SELECT * FROM shoptype WHERE stpanentid=0
     </select>
+
+
+    <select id="All" parameterType="com.guigu.tian.entity.Shoptype" resultType="com.guigu.tian.entity.Shoptype">
+        SELECT *  FROM shoptype
+    </select>
 </mapper>
