@@ -7,6 +7,10 @@
    SELECT * FROM shop LEFT JOIN shoptype ON shop.`stid`=shoptype.`stid`
     </select>
 
+
+    <update id="deletesp" parameterType="int">
+        UPDATE shop SET sbshang=0 WHERE sid=#{sid}
+    </update>
 </mapper>
 
 

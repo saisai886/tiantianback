@@ -41,16 +41,10 @@ public class UserdtailsServiceimpl  extends
         return userdtailsMapper.updateById(userdtails);
     }
 
-    @Override
-    public int scyhxx(int uid) {
-        QueryWrapper<Userdtails> wrapper = new QueryWrapper<Userdtails>();
-        wrapper.eq("uid",uid);
-        return this.baseMapper.delete(wrapper);
-    }
 
     @Override
     public int scyh(int uid) {
-        return userdtailsMapper.scyh(uid);
+        return userdtailsMapper.deleteyh(uid);
     }
 
     @Override

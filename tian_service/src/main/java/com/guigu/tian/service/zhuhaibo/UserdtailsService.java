@@ -18,7 +18,7 @@ Userdtails selectId(int uid );
 int  xgyh(Userdtails userdtails );
 
 //删除
-    int scyhxx(int uid);
+
 
     int scyh(int uid);
 

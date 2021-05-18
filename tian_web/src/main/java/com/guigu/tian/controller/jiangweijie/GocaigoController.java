@@ -45,7 +45,14 @@ public class GocaigoController {
 
         return caigou;
     }
+    @RequestMapping("selectListAllIdchuku")
+    @ResponseBody
+    public List<Supcaigousp> selectListAllIdchuku(int cgid){
 
+        List<Supcaigousp> caigou = gohscaigoService.selectListAllIdchuku(cgid);
+
+        return caigou;
+    }
 
 
 
@@ -96,6 +103,8 @@ public class GocaigoController {
 
         Caigou gou=new Caigou();
         gou.setCgid(id);
+        System.out.println(supzo+"===");
+        System.out.println(supyes+"===");
 
         if(supyes<supzo){
             gou.setCgghszhuangtai("cg003");

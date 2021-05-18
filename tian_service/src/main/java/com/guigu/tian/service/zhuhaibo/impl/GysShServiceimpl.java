@@ -48,4 +48,19 @@ public class GysShServiceimpl extends ServiceImpl<GysMapper, Gongyingshang>
     public int xggyszt(int gid) {
         return gysMapper.xggyszt(gid);
     }
+
+    @Override
+    public int deletegys(int gid) {
+        return gysMapper.deletegys(gid);
+    }
+
+    @Override
+    public Gongyingshang SelectId(int gid) {
+        return gysMapper.SelectId(gid);
+    }
+
+    @Override
+    public int xgGys(Gongyingshang gongyingshang) {
+        return gysMapper.xgGys(gongyingshang);
+    }
 }

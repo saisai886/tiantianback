@@ -3,7 +3,7 @@
 <mapper namespace="com.guigu.tian.mapper.jiangweijie.GhshangChukuMapper" >
 
     <select id="SupChuKu" resultType="com.guigu.tian.entity.Caigou" parameterType="com.guigu.tian.entity.jiangweijie.Supchanxu">
-        select * from caigou WHERE cgzhuangtai='c001' AND cgghszhuangtai='cg001' and cgchuku="ck002"
+        select * from caigou WHERE cgzhuangtai='c001' AND cgghszhuangtai='cg003' and cgchuku="ck002"
         <if test="name!=null and name!=''">
             and cgdan like concat(concat('%', #{name}), '%')
         </if>
@@ -11,7 +11,7 @@
 
 
     <select id="SupChuKujilui" resultType="com.guigu.tian.entity.Caigou" parameterType="com.guigu.tian.entity.jiangweijie.Supchanxu">
-        select * from caigou WHERE cgzhuangtai='c001' AND cgghszhuangtai='cg001' and cgchuku='ck001'
+        select * from caigou WHERE cgzhuangtai='c001' AND cgghszhuangtai='cg003' and cgchuku='ck001'
         <if test="name!=null and name!=''">
             and cgdan like concat(concat('%', #{name}), '%')
         </if>

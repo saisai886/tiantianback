@@ -3,6 +3,7 @@ package com.guigu.tian.service.zhuhaibo.impl;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.guigu.tian.entity.Gongyingshang;
 import com.guigu.tian.entity.hesijie.Shanghu;
 import com.guigu.tian.mapper.zhuhaibo.ShanghuMapper;
 import com.guigu.tian.service.zhuhaibo.ShanghuService;
@@ -46,4 +47,22 @@ public class ShanghuServiceimpl extends ServiceImpl<ShanghuMapper, Shanghu> impl
     public int xgshzt(int shid) {
         return shanghuMapper.xgshzt(shid);
     }
+
+    @Override
+    public int deletesh(int shid) {
+        return shanghuMapper.deletesh(shid);
+    }
+
+    @Override
+    public Shanghu SelectId(int shid) {
+        return shanghuMapper.selectId1(shid);
+    }
+
+    @Override
+    public int xgShanghu(Shanghu shanghu) {
+        return shanghuMapper.xgShanghu(shanghu);
+    }
+
+
+
 }

@@ -8,7 +8,7 @@
     </select>
 
     <select id="SelectCxzt" resultType="com.guigu.tian.entity.Gongyingshang" parameterType="com.guigu.tian.entity.Gongyingshang" >
-    SELECT * FROM gongyingshang WHERE gzhuangtai='G003'
+    SELECT * FROM gongyingshang WHERE gzhuangtai='G003' OR gzhuangtai='G004'
     </select>
 
 
@@ -18,5 +18,22 @@
 
     <update id="xggyszt" parameterType="int">
     UPDATE `gongyingshang` SET  gzhuangtai='G003'WHERE gid=#{gid}
+    </update>
+
+
+    <update id="deletegys" parameterType="int">
+        UPDATE gongyingshang SET gzhuangtai='G004' WHERE gid=#{gid}
+    </update>
+
+
+    <select id="SelectId" parameterType="com.guigu.tian.entity.Gongyingshang" resultType="com.guigu.tian.entity.Gongyingshang">
+          SELECT * FROM gongyingshang WHERE gid=#{gid}
+    </select>
+
+
+    <update id="xgGys" parameterType="com.guigu.tian.entity.Gongyingshang" >
+        UPDATE `gongyingshang` SET gname=#{gname},gaddre=#{gaddre},gphone=#{gphone},
+        gzhutitype=#{gzhutitype},gfaname=#{gfaname},gfarcard=#{gfarcard},
+        gzhucetime=#{gzhucetime},gyingyeimg=#{gyingyeimg},gzhuangtai='G002' WHERE gid=#{gid}
     </update>
 </mapper>

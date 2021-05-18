@@ -5,10 +5,7 @@ import com.guigu.tian.entity.Gongyingshang;
 import com.guigu.tian.service.zhuhaibo.GysShService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @CrossOrigin
@@ -54,5 +51,32 @@ public PageInfo<Gongyingshang> SelectCxzt(Gongyingshang gongyingshang,
     public int xggyszt(int gid){
         int xggyszt = gysShService.xggyszt(gid);
         return xggyszt;
+    }
+
+
+    //删除
+    @RequestMapping("deletegys.action")
+    @ResponseBody
+    public  int deletegys(int gid){
+        return gysShService.deletegys(gid);
+    }
+
+
+
+    //根据id查询
+    @RequestMapping("SelectId.action")
+    @ResponseBody
+    public  Gongyingshang SelectId(int gid){
+        Gongyingshang gongyingshang = gysShService.SelectId(gid);
+        return gongyingshang;
+    }
+
+
+    //修改
+    @RequestMapping("xgGys.action")
+    @ResponseBody
+    public  int xgGys(@RequestBody Gongyingshang gongyingshang){
+        int i = gysShService.xgGys(gongyingshang);
+        return i;
     }
 }
