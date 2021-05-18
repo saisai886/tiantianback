@@ -40,6 +40,16 @@ public class Supcaigou extends Gongyingshop {
 
     //所要数量
     private int cdcoun;
+//    未入库
+    private String cgruku;
+
+    public String getCgruku() {
+        return cgruku;
+    }
+
+    public void setCgruku(String cgruku) {
+        this.cgruku = cgruku;
+    }
 
     public int getCgid() {
         return cgid;

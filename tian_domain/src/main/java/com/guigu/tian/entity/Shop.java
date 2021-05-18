@@ -34,5 +34,4 @@ public class Shop {
     private  Integer sbshang;
 
 
-
 }

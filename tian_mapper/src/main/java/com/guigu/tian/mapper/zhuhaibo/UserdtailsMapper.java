@@ -16,4 +16,7 @@ public interface UserdtailsMapper extends BaseMapper<Userdtails> {
 
 //修改
     int  xgUserdtails(Userdtails userdtails);
+
+    //删除
+    int deleteyh(int uid);
 }

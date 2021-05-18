@@ -8,19 +8,179 @@
     </select>
     <!--根据条件修改-->
     <update id="updategowuche" parameterType="com.guigu.tian.entity.Usershop">
-        UPDATE usershop SET scount=scount+1 WHERE uid=4 AND sid=175
+        UPDATE usershop SET scount=scount+#{scount} WHERE uid=#{uid} AND sid=#{sid}
+    </update>
+    <!--加减-->
+    <update id="updatejianjiang" parameterType="com.guigu.tian.entity.Usershop">
+        UPDATE usershop SET scount=#{scount} WHERE uid=#{uid} AND sid=#{sid}
     </update>
 
 
     <!--购物车查询-->
     <select id="selectAll" parameterType="com.guigu.tian.entity.jiangweijie.Supgowuchetiaoiang" resultType="com.guigu.tian.entity.jiangweijie.Supgowuche">
-        SELECT usershop.`scount`,shop.`sname`,shop.`sprice`,shop.`simg` FROM USER INNER JOIN usershop ON
-        user.`uid`=usershop.`uid` INNER JOIN shop ON usershop.`sid`=shop.`sid` WHERE user.`uid`=#{id}
+        SELECT usershop.`scount`,shop.`sname`,shop.`sprice`,shop.`simg`,shop.`sid` FROM USER INNER JOIN usershop ON
+        user.`uid`=usershop.`uid` INNER JOIN shop ON usershop.`sid`=shop.`sid` WHERE usershop.`sgwstate`="sg001" and user.`uid`=#{id}
         <if test="name!=null and name!=''">
             and shop.`sname` like concat(concat('%', #{name}), '%')
         </if>
 
     </select>
 
+    <!--删除购物车-->
+    <delete id="deleteid" parameterType="com.guigu.tian.entity.Usershop">
+        DELETE FROM usershop WHERE uid=#{uid} AND sid=#{sid}
+    </delete>
+
+
+    <!--购物车购买-->
+    <insert id="sttile" parameterType="com.guigu.tian.entity.Userdingdan">
+        insert into userdingdan (uid,udddingdan,ucount,shid,uzhuangtai,udtime,udspricesum)
+        values(#{uid},#{udddingdan},#{ucount},#{shid},#{uzhuangtai},#{udtime},#{udspricesum})
+    </insert>
+
+
+
+
+    <!--判断是否有地址和支付密码-->
+    <select id="gwcpanduan" parameterType="com.guigu.tian.entity.Userdtails" resultType="com.guigu.tian.entity.Userdtails">
+        SELECT udaddr,udpwd FROM userdtails WHERE uid=#{uid}  <!--用户id查询-->
+    </select>
+
+
+
+
+
+
+
+
+    <!--查询我的收货地址 用户和商户表-->
+    <select id="shohuodizhi" parameterType="com.guigu.tian.entity.jiangweijie.Supshohuo" resultType="com.guigu.tian.entity.jiangweijie.Supshohuo">
+        SELECT
+
+                usershanghu.`shid`,
+                usershanghu.`usshiyong`, <!--收货地址默认状态-->
+               shanghu.`shname`,        <!--商户名称-->
+               shanghu.`shaddr`,        <!--商品地址-->
+               shanghu.`shfuzename`,    <!--负责人姓名-->
+               shanghu.`shphone`        <!--负责人联系方式-->
+        FROM  USER
+            INNER  JOIN   usershanghu ON user.`uid`=usershanghu.`uid`
+            INNER JOIN shanghu ON shanghu.`shid`=usershanghu.`shid`
+        <where>
+              and   user.`uid`=#{uid}
+        </where>
+
+    </select>
+
+
+    <!--查询所有商户表-->
+    <select id="tianjiashohuo" parameterType="com.guigu.tian.entity.hesijie.Shanghu" resultType="com.guigu.tian.entity.hesijie.Shanghu">
+        select shaddr from shanghu
+
+    </select>
+
+
+    <!--查询所购物车的地址-->
+    <select id="Gowuchaddr" parameterType="com.guigu.tian.entity.hesijie.Shanghu" resultType="com.guigu.tian.entity.hesijie.Shanghu">
+        select * from shanghu where shaddr=#{shaddr}
+    </select>
+
+    <!--添加关联表商户地址 详细-->
+    <insert id="shaddrtj" parameterType="com.guigu.tian.entity.Usershanghu">
+        insert into usershanghu values(default,#{uid},#{shid},#{usshiyong})
+    </insert>
+
+    <select id="shaddrselect" parameterType="com.guigu.tian.entity.Usershanghu" resultType="com.guigu.tian.entity.Usershanghu">
+        select * from usershanghu where uid=#{uid} and shid=#{shid}
+    </select>
+
+    <!--修改收货地址的默认信息-->
+    <update id="updatdefault" parameterType="com.guigu.tian.entity.Usershanghu">
+        UPDATE usershanghu SET usshiyong=#{usshiyong} WHERE uid=#{uid} AND shid=#{shid}
+    </update>
+
+    <update id="updatdefaultll" parameterType="com.guigu.tian.entity.Usershanghu">
+        UPDATE usershanghu SET usshiyong="0"  WHERE uid=#{uid}
+    </update>
+
+
+    <!--修改地址时查询默认的地址-->
+    <select id="selectaddr"   parameterType="com.guigu.tian.entity.jiangweijie.Supshohuo" resultType="com.guigu.tian.entity.jiangweijie.Supshohuo">
+        SELECT shanghu.`shaddr` FROM USER
+         INNER  JOIN   usershanghu ON user.`uid`=usershanghu.`uid`
+         INNER JOIN shanghu ON shanghu.`shid`=usershanghu.`shid` WHERE user.uid=#{uid} AND usershanghu.shid=#{shid}
+    </select>
+
+    <!--改用户状态-->
+        <update id="updatedefaultdizhi" parameterType="com.guigu.tian.entity.Userdtails">
+            update userdtails set udaddr=#{udaddr} where uid=#{uid}
+        </update>
+
+    <!--删除地址-->
+    <delete id="dizhisc" parameterType="com.guigu.tian.entity.Usershanghu">
+        delete from usershanghu where shid=#{shid}
+    </delete>
+
+
+    <!--购物车如果没有值添加-->
+    <insert id="insertjieshuang" parameterType="com.guigu.tian.entity.Userdtails">
+        insert into userdtails values(default,#{uid},#{udname},#{udphone},#{udaddr},#{udimg},#{udsex},#{udmoney},#{udpwd})
+    </insert>
+
+    <!--购物车如果没有值添加 地址 为默认 -->
+    <insert id="gwcshagnhuguangliang" parameterType="com.guigu.tian.entity.Usershanghu">
+        insert into Usershanghu values(default,#{uid},#{shid},#{usshiyong})
+    </insert>
+
+
+
+   <select id="gwcshagnhuguangliang1" parameterType="com.guigu.tian.entity.hesijie.Shanghu" resultType="com.guigu.tian.entity.hesijie.Shanghu">
+        select * from shanghu where shaddr=#{shaddr}
+   </select>
+
+
+    <!--zf-->
+    <select id="zf" resultType="com.guigu.tian.entity.Userdtails" parameterType="com.guigu.tian.entity.Userdtails">
+        select * from Userdtails where udpwd=#{udpwd} and uid=#{uid}
+    </select>
+
+
+
+    <!--订单号查询-->
+        <select id="gwcdidan" parameterType="com.guigu.tian.entity.Userdingdan" resultType="com.guigu.tian.entity.Userdingdan">
+            SELECT * FROM userdingdan   ORDER BY  udtime DESC LIMIT 0,1
+        </select>
+
+
+
+    <!--查询商户表-->
+    <select id="shanghuiid" resultType="com.guigu.tian.entity.Usershanghu" parameterType="com.guigu.tian.entity.Usershanghu">
+        select * from usershanghu where uid=#{uid} and usshiyong="1"
+    </select>
+
+    <select id="shanghuiiddd" parameterType="com.guigu.tian.entity.hesijie.Shanghu" resultType="com.guigu.tian.entity.hesijie.Shanghu">
+        select * from shanghu where shid=#{shid}
+    </select>
+
+
+    <!--usershop表查询修改-->
+    <update id="userupdateshop" parameterType="com.guigu.tian.entity.Usershop">
+        update usershop set sgwstate="sg002",uddid=#{uddid} where uid=#{uid} and sid=#{sid}
+    </update>
+
+
+    <!--待支付 ，支付成功改状态-->
+    <update id="Alldaizhifuchego" parameterType="com.guigu.tian.entity.Userdingdan">
+        update userdingdan set uzhuangtai="f003" where uddid=#{uddid}
+    </update>
+
+    <!--商品购买的数量加减-->
+    <update id="updatenum" parameterType="com.guigu.tian.entity.Shop">
+        UPDATE shop SET sshopcount=sshopcount+#{sshopcount},skucun=skucun-#{skucun} WHERE sid=#{sid}
+    </update>
+    <!--查询数量-->
+    <select id="numshuliang" parameterType="com.guigu.tian.entity.Usershop" resultType="com.guigu.tian.entity.Usershop">
+        SELECT * FROM usershop WHERE uid=#{uid} and sid=#{sid}
+    </select>
 
 </mapper>

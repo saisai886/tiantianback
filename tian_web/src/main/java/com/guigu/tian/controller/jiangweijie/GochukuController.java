@@ -33,6 +33,7 @@ public class GochukuController {
     public Boolean Supupdate(int id){
             Caigou caigou=new Caigou();
             caigou.setCgchuku("ck001");
+            caigou.setCgruku("rk001");
             caigou.setCgid(id);
             gohschukuService.updateById(caigou);
 

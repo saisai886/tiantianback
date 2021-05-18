@@ -1,12 +1,12 @@
 package com.guigu.tian.controller.zhuhaibo;
 
+import com.github.pagehelper.PageInfo;
 import com.guigu.tian.entity.Shoptype;
+import com.guigu.tian.entity.zhuhaibo.MyShoplx;
 import com.guigu.tian.service.zhuhaibo.ShoptypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -31,5 +31,15 @@ public class ShopLxController {
     public Shoptype splx(Integer stid) {
         Shoptype spid = shoptypeService.spid(stid);
         return spid;
+    }
+
+    //查询
+    @RequestMapping("selectAll.action")
+    @ResponseBody
+    public PageInfo<Shoptype> selectAll(Shoptype shoptype,
+    @RequestParam(defaultValue = "1")Integer pageNo,
+    @RequestParam(defaultValue = "5") Integer pageSize){
+        PageInfo<Shoptype> all = shoptypeService.All(shoptype, pageNo, pageSize);
+        return all;
     }
 }

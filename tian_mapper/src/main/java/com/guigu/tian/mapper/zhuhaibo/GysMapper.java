@@ -20,4 +20,15 @@ public interface GysMapper extends BaseMapper<Gongyingshang> {
 
     //修改供应商状态为G003
     int xggyszt(int gid);
+
+
+    //删除
+    int deletegys(int gid);
+
+    //根据id查询
+    Gongyingshang SelectId(int gid);
+
+
+    //修改
+    int xgGys(Gongyingshang gongyingshang);
 }

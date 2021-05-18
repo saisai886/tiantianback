@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.guigu.tian.mapper.hesijie.Hsj_RukuMapper" >
+
+    <select id="queryAll" parameterType="com.guigu.tian.entity.hesijie.MyRuku" resultType="com.guigu.tian.entity.hesijie.MyRuku">
+                      SELECT
+                    cg.cgid cgid,
+                    cg.cgdan cgdan,
+                    cg.cgshentime cgshentime,
+                    cg.cgcorporate cgcorporate,
+                    cg.cgaddress cgaddress,
+                    cg.cgchuku cgchuku,
+                    cg.cgallmoney cgallmoney,
+                    yg.ygname ygname
+                    FROM `caigou` cg
+                    INNER JOIN `yuangong` yg
+                    ON cg.ygid=yg.ygid
+                    <where>
+                    <if test="cgdan!=null and cgdan!=''">
+                    and cg.cgdan like concat('%',#{cgdan},'%')
+                    </if>
+                    and  cg.cgghszhuangtai='cg001'
+                    and cg.cgruku='rk001'
+                    </where>
+
+    </select>
+
+    <select id="queryId" parameterType="com.guigu.tian.entity.hesijie.MyRuku" resultType="com.guigu.tian.entity.hesijie.MyRuku">
+                                 SELECT
+                                   cgdt.cdcoun cdcoun,
+                                 gys.gfaname gfaname,
+                                 gys.gphone gphone,
+                                 gys.gzhutitype gzhutitype,
+                                 gys.gaddre gaddre,
+                                 gys.gname gname,
+                                 gys.gyingyeimg gyingyeimg,
+                                  gysp.gsid gsid,
+                                 gysp.gsname gsname,
+                                 gysp.gsprice gsprice,
+                                 gysp.gsmiaoshu gsmiaoshu,
+                                 gysp.gsimg gsimg,
+                                 gysp.gsbozhi gsbozhi,
+                                  gysp.gschandi gschandi
+                                  FROM caigou cg
+                                 INNER JOIN caigoudtis cgdt
+                                 ON cg.cgid=cgdt.cgid
+                                 INNER JOIN gongyingshop gysp
+                                 ON cgdt.gsid=gysp.gsid
+                                 INNER JOIN gongyingshang gys
+                                 ON gysp.gid=gys.gid
+                                 WHERE cg.cgid= #{cgid}
+                                 AND  cg.cgghszhuangtai= 'cg001'
+                                 AND cg.cgchuku='ck001'
+                                 AND cgdt.cdzhuangtai='cd001'
+    </select>
+
+     <insert id="shopInsert" parameterType="java.util.List">
+         INSERT INTO shop VALUES (null,#{sname},null,#{soldprice},null
+         ,0,#{schandi},null,#{skucun},#{sbaozhitime},
+         #{simg},#{sbeizhu},0)
+<!--         <foreach collection="list" item="item" index="index" separator="," >-->
+<!--             (null,#{item.gsname},null,#{item.gsprice},null-->
+<!--              ,0,#{item.gschandi},null,#{item.cdcoun},#{item.gsbozhi},-->
+<!--              #{item.gsimg},#{item.gsmiaoshu},0)-->
+<!--         </foreach>-->
+     </insert>
+
+    <select id="queryShenHeShow"  parameterType="com.guigu.tian.entity.hesijie.MyRuku" resultType="com.guigu.tian.entity.hesijie.MyRuku">
+                    SELECT
+		            cg.cgid cgid,
+                    cg.cgdan cgdan,
+                    ckrk.ckshenhetime ckshenhetime,
+                    ckrk.ckzhuangtai ckzhuangtai,
+                    cg.cgcorporate cgcorporate,
+                    cg.cgaddress cgaddress,
+                    cg.cgchuku cgchuku,
+                    cg.cgallmoney cgallmoney,
+                    yg.ygname ygname
+                    FROM
+                    `cangkuruku` ckrk
+                    INNER JOIN shopcangku ck
+                    ON ckrk.scid=ck.scid
+                    INNER JOIN caigou cg
+                    ON cg.cgdan=ckrk.ckdan
+                     INNER JOIN `yuangong` yg
+                     ON cg.ygid=yg.ygid
+                    <where>
+                    <if test="cgdan!=null and cgdan!=''">
+                        and cg.cgdan like concat('%',#{cgdan},'%')
+                    </if>
+                    </where>
+    </select>
+
+</mapper>

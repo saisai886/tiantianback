@@ -18,4 +18,9 @@ public class Usershop {
     private int sid;
     //	数量
     private int scount;
+    //状态
+    private String sgwstate;
+    //关联订单
+    private String uddid;
+
 }
