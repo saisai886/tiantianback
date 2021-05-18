@@ -1,6 +1,7 @@
 package com.guigu.tian.controller.hesijie;
 
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.github.pagehelper.PageInfo;
 import com.guigu.tian.entity.Cangkuruku;
 import com.guigu.tian.entity.Shop;
@@ -48,7 +49,10 @@ public class Hsj_RukuController {
     @RequestMapping("cangkuShow")
     @ResponseBody
     public List<Shopcangku> cangkuShow(){
-        return hsj_cangkuService.list();
+        QueryWrapper<Shopcangku> wrapper=new QueryWrapper<Shopcangku>();
+        wrapper.ne("scname","无");
+        wrapper.eq("sczhuangtai",0);
+        return hsj_cangkuService.list(wrapper);
      }
 
     @RequestMapping("rukuUpdateStaus")

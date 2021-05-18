@@ -19,7 +19,7 @@
                     <if test="cgdan!=null and cgdan!=''">
                     and cg.cgdan like concat('%',#{cgdan},'%')
                     </if>
-                    and  cg.cgchuku='ck001'
+                    and  cg.cgghszhuangtai='cg001'
                     and cg.cgruku='rk001'
                     </where>
 
