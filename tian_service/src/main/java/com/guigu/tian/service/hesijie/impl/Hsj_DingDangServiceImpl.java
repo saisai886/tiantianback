@@ -38,7 +38,7 @@ public class Hsj_DingDangServiceImpl extends ServiceImpl<Hsj_DingDangMapper, Use
                 MyCheliang myCheliang = hsj_dingDangMapper.queryCheliangShow(uddid);
                 hsj_dingDangMapper.updateChelianggl(myCheliang.getClcid());
                 hsj_dingDangMapper.updateCheliangps(myCheliang.getPcid());
-                hsj_dingDangMapper.updateYuangong(myCheliang.getYgid());
+//                hsj_dingDangMapper.updateYuangong(myCheliang.getYgid());
                 return hsj_dingDangMapper.updateUserDingdang(uddid);
         }
 
