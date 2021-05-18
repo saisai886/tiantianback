@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.guigu.tian.mapper.jiangweijie.GhshangAllshangpingMapper" >
+    <!--全部 订单-->
+    <select id="selectdingdan" resultType="com.guigu.tian.entity.Userdingdan" parameterType="com.guigu.tian.entity.Userdingdan">
+        select * from userdingdan where  Uzhuangtai='f005'
+    </select>
+    <!--全部查看-->
+    <select id="AllSelectId" parameterType="com.guigu.tian.entity.jiangweijie.SupshangpingAll" resultType="com.guigu.tian.entity.jiangweijie.SupshangpingAll">
+        SELECT * FROM usershop INNER JOIN userdingdan ON
+         usershop.`uddid`=userdingdan.`uddid`
+          INNER JOIN shop ON shop.`sid`=usershop.`sid` WHERE usershop.`uddid`=#{id}
+
+    </select>
+
+
+    <!--全部订单 三表-->
+    <select id="shangpingAll" parameterType="com.guigu.tian.entity.jiangweijie.SupshangpingAll" resultType="com.guigu.tian.entity.jiangweijie.SupshangpingAll">
+        SELECT * FROM usershop INNER JOIN userdingdan ON
+            usershop.`uddid`=userdingdan.`uddid`
+            INNER JOIN shop ON shop.`sid`=usershop.`sid`
+
+    </select>
+<!--    where  Uzhuangtai='f005'-->
+
+
+        <!--待支付-->
+    <select id="Alldaizhifu" resultType="com.guigu.tian.entity.Userdingdan" parameterType="com.guigu.tian.entity.Userdingdan">
+        SELECT * FROM userdingdan  WHERE userdingdan.`uzhuangtai`="f001"
+    </select>
+
+    <!--待发货-->
+
+    <select id="Alldaifahuo" resultType="com.guigu.tian.entity.Userdingdan" parameterType="com.guigu.tian.entity.Userdingdan">
+        SELECT * FROM userdingdan  WHERE userdingdan.`uzhuangtai`="f003"
+    </select>
+    <!--待提货-->
+    <select id="Alldaitihuo" resultType="com.guigu.tian.entity.Userdingdan" parameterType="com.guigu.tian.entity.Userdingdan">
+        SELECT * FROM userdingdan  WHERE userdingdan.`uzhuangtai`="f004-1"
+    </select>
+    <!--提货-->
+    <update id="Alltihuo" parameterType="com.guigu.tian.entity.Userdingdan">
+        update userdingdan set uzhuangtai="f005" where uddid=#{uddid}
+    </update>
+
+
+    <!--已提货-->
+    <select id="YeAlldaitihuo" resultType="com.guigu.tian.entity.Userdingdan" parameterType="com.guigu.tian.entity.Userdingdan">
+        SELECT * FROM userdingdan  WHERE userdingdan.`uzhuangtai`="f005"
+    </select>
+
+
+
+
+</mapper>

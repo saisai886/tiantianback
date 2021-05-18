@@ -148,14 +148,14 @@
 
     <!--订单号查询-->
         <select id="gwcdidan" parameterType="com.guigu.tian.entity.Userdingdan" resultType="com.guigu.tian.entity.Userdingdan">
-            SELECT MAX(uddid) as uddid ,udddingdan FROM userdingdan
+            SELECT * FROM userdingdan   ORDER BY  udtime DESC LIMIT 0,1
         </select>
 
 
 
     <!--查询商户表-->
     <select id="shanghuiid" resultType="com.guigu.tian.entity.Usershanghu" parameterType="com.guigu.tian.entity.Usershanghu">
-        select * from usershanghu where uid=#{uid}
+        select * from usershanghu where uid=#{uid} and usshiyong="1"
     </select>
 
     <select id="shanghuiiddd" parameterType="com.guigu.tian.entity.hesijie.Shanghu" resultType="com.guigu.tian.entity.hesijie.Shanghu">
@@ -169,6 +169,18 @@
     </update>
 
 
+    <!--待支付 ，支付成功改状态-->
+    <update id="Alldaizhifuchego" parameterType="com.guigu.tian.entity.Userdingdan">
+        update userdingdan set uzhuangtai="f003" where uddid=#{uddid}
+    </update>
 
+    <!--商品购买的数量加减-->
+    <update id="updatenum" parameterType="com.guigu.tian.entity.Shop">
+        UPDATE shop SET sshopcount=sshopcount+#{sshopcount},skucun=skucun-#{skucun} WHERE sid=#{sid}
+    </update>
+    <!--查询数量-->
+    <select id="numshuliang" parameterType="com.guigu.tian.entity.Usershop" resultType="com.guigu.tian.entity.Usershop">
+        SELECT * FROM usershop WHERE uid=#{uid} and sid=#{sid}
+    </select>
 
 </mapper>

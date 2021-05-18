@@ -26,6 +26,8 @@ public class GogowucheController {
     @Autowired
     GohsgowucheService gohsgowucheService;
 
+    @Autowired
+    GoshangpingAllController goshangpingAllController;
 
     @RequestMapping("/addGowuche")  //添加购物车
     @ResponseBody
@@ -256,7 +258,7 @@ public class GogowucheController {
 
         System.out.println("===================");
         Userdingdan gwcdidan = gohsgowucheService.gwcdidan();  //订单查询
-        String didan;
+        String didan="";
         if(gwcdidan!=null){
             didan=  CreateIdUtil.createid("300",gwcdidan.getUdddingdan());
         }else{
@@ -277,7 +279,7 @@ public class GogowucheController {
         dingdan.setUcount(scount);
         dingdan.setUdddingdan(didan);
         dingdan.setShid(Integer.toString(shanghuiiddd.getShid()));
-        dingdan.setUzhuangtai("f002");
+        dingdan.setUzhuangtai("f003");
         dingdan.setUdtime(new Date());
         dingdan.setUdspricesum(udspricesum);
 
@@ -295,6 +297,17 @@ public class GogowucheController {
             gohsgowucheService.userupdateshop(shop); //修改状态  sgwstate 为cg002 和uddid状态
 
 
+
+
+
+            Usershop numshuliang = gohsgowucheService.numshuliang(shop); //修改数量
+            System.out.println(numshuliang);
+            Shop p=new Shop();
+            p.setSid(Integer.parseInt(sid));
+            p.setSshopcount(numshuliang.getScount());
+            p.setSkucun(numshuliang.getScount());
+
+            gohsgowucheService.updatenum(p);
         }
 
 
@@ -316,7 +329,7 @@ public class GogowucheController {
         }
 
         System.out.println(didan+"订单编号");
-
+        System.out.println(uid);
         //查询商户信息对应的商户id
         Usershanghu shanghuiid = gohsgowucheService.shanghuiid(uid);
 
@@ -370,6 +383,7 @@ public class GogowucheController {
             didan=  CreateIdUtil.createid("300","");
         }
 
+
         //查询商户信息对应的商户id
         Usershanghu shanghuiid = gohsgowucheService.shanghuiid(uid);
 
@@ -382,7 +396,7 @@ public class GogowucheController {
         dingdan.setUcount(scount);
         dingdan.setUdddingdan(didan);
         dingdan.setShid(Integer.toString(shanghuiiddd.getShid()));
-        dingdan.setUzhuangtai("f002"); //已付款
+        dingdan.setUzhuangtai("f003"); //已付款
         dingdan.setUdtime(new Date());
         dingdan.setUdspricesum(qxzojiang);
 
@@ -414,6 +428,16 @@ public class GogowucheController {
             shop.setUddid(Integer.toString(gwcdidan1.getUddid()));   //关联
 
             gohsgowucheService.userupdateshop(shop); //修改状态  sgwstate 为cg002 和uddid状态
+
+
+            Usershop numshuliang = gohsgowucheService.numshuliang(shop); //修改数量
+            System.out.println(numshuliang);
+            Shop p=new Shop();
+            p.setSid(s.getSid());
+            p.setSshopcount(numshuliang.getScount());
+            p.setSkucun(numshuliang.getScount());
+
+            gohsgowucheService.updatenum(p);
 
         }
 
@@ -484,6 +508,47 @@ public class GogowucheController {
             gohsgowucheService.userupdateshop(shop); //修改状态  sgwstate 为cg002 和uddid状态
 
         }
+
+        return 1;
+    }
+
+
+
+
+
+
+
+    @RequestMapping("/grzxquanxuan") //个人中心    全选修改
+    @ResponseBody
+    public int grzxquanxuan(@RequestBody List<Shop> shanghus,int uid,int uddid){
+
+        Userdingdan gwcdidan1 = gohsgowucheService.gwcdidan(); //查询最后一个订单
+
+        System.out.println(uid);
+
+        for(Shop s:shanghus){
+           // System.out.println(gwcdidan1+"================");
+            Usershop shop=new Usershop();
+            shop.setUid(uid);
+            shop.setSid(s.getSid());
+            shop.setUddid(Integer.toString(gwcdidan1.getUddid()));   //关联
+
+
+            gohsgowucheService.userupdateshop(shop); //修改状态  sgwstate 为cg002 和uddid状态
+
+
+            Usershop numshuliang = gohsgowucheService.numshuliang(shop);
+            System.out.println(numshuliang);
+                Shop p=new Shop();
+                p.setSid(s.getSid());
+                p.setSshopcount(numshuliang.getScount());
+                p.setSkucun(numshuliang.getScount());
+
+                gohsgowucheService.updatenum(p);
+        }
+
+
+        gohsgowucheService.Alldaizhifuchego(uddid);
 
         return 1;
     }
