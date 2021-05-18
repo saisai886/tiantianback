@@ -15,6 +15,8 @@ public interface GohscaigoService extends IService<Supcaigou> {
 
     List<Supcaigousp> selectListAllId(int id);
 
+    List<Supcaigousp> selectListAllIdchuku(int id);
+
     //三表连接
     PageInfo<Supcaigou> selectAll(String name, int pageNo, int pageSize);
 
