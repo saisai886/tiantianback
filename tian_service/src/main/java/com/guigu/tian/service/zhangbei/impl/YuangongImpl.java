@@ -70,5 +70,11 @@ public class YuangongImpl extends ServiceImpl<YuangongMapper, Yuangong>
         return list;
     }
 
+    @Override
+    public List<Yuangong> ygquery() {
+        List<Yuangong> ygquery = yuangongMapper.ygquery();
+        return ygquery;
+    }
+
 
 }

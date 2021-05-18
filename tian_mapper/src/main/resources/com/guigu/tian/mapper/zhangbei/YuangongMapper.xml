@@ -12,4 +12,14 @@
     <delete id="ygjsdelete" parameterType="java.lang.Integer">
         delete from userrole where ygid = #{ygid}
     </delete>
+
+<!--    查询空闲员工-->
+    <select id="ygquery" resultType="com.guigu.tian.entity.Yuangong">
+        SELECT yg.* FROM  `yuangong` yg
+INNER JOIN `userrole` ur
+ON ur.ygid = yg.ygid
+INNER JOIN role r
+ON r.rid = ur.rid
+WHERE rname = '配送人员' AND ygzhuangtai = 'a003'
+    </select>
 </mapper>

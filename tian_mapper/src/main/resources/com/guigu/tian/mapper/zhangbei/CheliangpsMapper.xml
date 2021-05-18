@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.guigu.tian.mapper.zhangbei.CheliangpsMapper" >
+    <select id="paixu" resultType="com.guigu.tian.entity.Cheliangps">
+        SELECT * FROM `cheliangps` ORDER BY pcid DESC LIMIT 1
+    </select>
+
+    <select id="peisongkey" resultType="java.lang.Integer">
+        SELECT LAST_INSERT_ID() AS id
+    </select>
+
+    <update id="clupdate" parameterType="com.guigu.tian.entity.Chelianggl">
+     update chelianggl set clzhuangtai = #{clzhuangtai}
+     where clcid = #{clcid}
+    </update>
+
+    <update id="uuidupdate" parameterType="java.lang.Integer">
+        update userdingdan set uzhuangtai='zb_f00' where uddid=#{uddid}
+    </update>
+
+    <select id="uuidAll" resultType="com.guigu.tian.entity.Cheliangxianxi" parameterType="java.lang.Integer">
+        select *  from cheliangxianxi where pcid=#{pcid}
+    </select>
+
+    <update id="cheliangpsupdate" parameterType="com.guigu.tian.entity.Cheliangps">
+        update cheliangps set pzhuangtai='z001'
+        WHERE pcid=#{pcid}
+    </update>
+
+
+    <update id="uddidfh" parameterType="com.guigu.tian.entity.Userdingdan">
+        UPDATE
+         `userdingdan`
+         SET uzhuangtai='f004', udfahuotime=#{udfahuotime}
+         WHERE uddid = #{uddid}
+    </update>
+
+
+
+</mapper>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.guigu.tian.mapper.zhangbei.Zb_cheliangps_cheliangxianxiMapper" >
+    <select id="shoppeisongAll" resultType="com.guigu.tian.entity.zhangbei.Zb_cheliangps_cheliangxianxi">
+SELECT c.*,yg.ygname FROM `cheliangps` c
+INNER JOIN `yuangong` yg
+ON yg.ygid = c.ygid
+WHERE c.pzhuangtai = 'z002'
+    </select>
+</mapper>

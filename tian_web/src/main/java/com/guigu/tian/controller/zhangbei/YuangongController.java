@@ -67,4 +67,12 @@ public class YuangongController {
         List<Yuangong> yglist = yuangongService.yglist();
         return yglist;
     }
+
+
+    @RequestMapping("ygpeisong.action")
+    @ResponseBody
+    public List<Yuangong> ygpeisong(){
+        List<Yuangong> ygquery = yuangongService.ygquery();
+        return ygquery;
+    }
 }

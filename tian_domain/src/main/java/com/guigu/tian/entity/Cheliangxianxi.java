@@ -15,5 +15,5 @@ public class Cheliangxianxi {
     //外键	车辆配送管理表*
     private  int pcid;
     //外键	用户订单表
-    private int  udd;
+    private int  uddid;
 }

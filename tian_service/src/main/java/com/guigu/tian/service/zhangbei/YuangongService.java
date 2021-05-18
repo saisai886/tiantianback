@@ -20,4 +20,6 @@ public interface YuangongService extends IService<Yuangong> {
     int ygupdate(Yuangong yuangong);
 
     List<Yuangong> yglist();
+
+    List<Yuangong> ygquery();
 }   

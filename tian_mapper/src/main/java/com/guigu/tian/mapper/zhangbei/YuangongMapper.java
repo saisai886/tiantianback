@@ -11,4 +11,6 @@ public interface YuangongMapper extends BaseMapper<Yuangong> {
     List<Yuangong> yuangoAll();
 
     int ygjsdelete(Integer ygid);
+
+    List<Yuangong> ygquery();
 }

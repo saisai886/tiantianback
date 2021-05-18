@@ -18,5 +18,8 @@ public class Cheliangps {
     //配送状态(配送中 z001待配送 z002 完成配送 z003)
     private String pzhuangtai;
 
+    //配送订单
+    private  String peisongid;
+
 
 }

@@ -15,4 +15,7 @@ public class Chelianggl {
     private  String clname;
     //车辆状态(工作中 x001休闲中 x002)
    private String  clzhuangtai;
+
+    //车辆名字
+    private String clmz;
 }

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.guigu.tian.mapper.zhangbei.Zb_userdingdan_user_shanghuMapper" >
+    <select id="userddAll" resultType="com.guigu.tian.entity.zhangbei.Zb_userdingdan_user_shanghu">
+   SELECT udd.*,u.`uname`,sh.`shname`,sh.`shaddr` FROM `userdingdan` udd
+   INNER JOIN `user` u
+   ON u.`uid` = udd.`uid`
+   INNER JOIN `shanghu` sh
+   ON sh.`shid`  = udd.`shid`
+   WHERE udd.`uzhuangtai` = 'f003'
+    </select>
+
+
+    <select id="uspAll" resultType="com.guigu.tian.entity.zhangbei.Zb_usershop_shop" parameterType="java.lang.Integer">
+SELECT usp.*,sp.`sname`,sp.`sprice` FROM `usershop` usp
+INNER JOIN `shop` sp
+ON usp.`sid` = sp.`sid`
+WHERE usp.`uddid` = #{uddid}
+    </select>
+
+    <select id="pciduserAll" resultType="com.guigu.tian.entity.zhangbei.Zb_userdingdan_user_shanghu" parameterType="java.lang.Integer">
+SELECT udd.*,u.uname,usp.sid AS spsid FROM `cheliangxianxi` cxx
+INNER JOIN `userdingdan` udd
+ON cxx.uddid = udd.uddid
+INNER JOIN USER u
+ON u.uid  = udd.uid
+INNER JOIN `usershop` usp
+ON usp.uddid = udd.uddid
+WHERE cxx.pcid = #{pcid}
+    </select>
+
+    <select id="shopsidAll" resultType="com.guigu.tian.entity.Shop" parameterType="java.lang.Integer">
+        select * from shop where sid = #{sid}
+    </select>
+</mapper>
