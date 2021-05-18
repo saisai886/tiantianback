@@ -16,5 +16,9 @@ public class Shopcangku {
      private String scname;
      //仓库地址
      private String  scaddr;
+//     状态
+     private int  sczhuangtai;
+
+
 
 }

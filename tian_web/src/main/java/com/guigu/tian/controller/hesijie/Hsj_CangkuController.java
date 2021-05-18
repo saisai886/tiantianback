@@ -1,6 +1,7 @@
 package com.guigu.tian.controller.hesijie;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.guigu.tian.entity.Shopcangku;
@@ -31,6 +32,7 @@ public class Hsj_CangkuController {
                  if(!StringUtils.isEmpty(shopcangku.getScname())){
                      wrapper.like("scname",shopcangku.getScname());  // where  name like '%val%'
                  }
+                 wrapper.ne("scname","无");
                  IPage<Shopcangku> page = hsj_cangkuService.page(new Page<Shopcangku>(pageNo, pageSize), wrapper);
                  return page;
              }
@@ -58,7 +60,14 @@ public class Hsj_CangkuController {
              @RequestMapping("cangkuDeleteId")
              @ResponseBody
              public String cangkuDeleteId(int scid){
-                 boolean b = hsj_cangkuService.removeById(scid);
+//                 UpdateWrapper<Shopcangku> wrapper=new UpdateWrapper<Shopcangku>();
+//                 wrapper.eq("scid",scid);
+//                 wrapper.eq("sczhuangtai",1);
+                 Shopcangku shopcangku=new Shopcangku();
+                 shopcangku.setScid(scid);
+                 shopcangku.setSczhuangtai(1);
+                 boolean b = hsj_cangkuService.updateById(shopcangku);
+
                  return b ? "delete success" : "delete fail";
              }
 

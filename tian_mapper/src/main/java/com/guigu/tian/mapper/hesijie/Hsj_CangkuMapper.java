@@ -5,4 +5,7 @@ import com.guigu.tian.entity.Cangkuruku;
 import com.guigu.tian.entity.Shopcangku;
 
 public interface Hsj_CangkuMapper extends BaseMapper<Shopcangku> {
+
+
+
 }

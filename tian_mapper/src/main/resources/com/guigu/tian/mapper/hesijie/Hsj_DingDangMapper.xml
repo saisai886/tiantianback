@@ -9,7 +9,6 @@
                     sh.uid uid,
                     udd.shid shid,
                     udd.uddid uddid,
-                    udd.ucount ucount,
                     udd.udddingdan udddingdan,
                     udd.udspricesum udspricesum,
                     udd.uzhuangtai uzhuangtai,
@@ -19,20 +18,23 @@
                     udd.udendtime udendtime,
                     utd.udname udname,
                     utd.udphone udphone,
-                    sp.sprice sprice,
-                    sp.sname sname,
-                    sp.sbeizhu sbeizhu,
-                    sp.simg simg
-                    FROM shanghu sh
-                    INNER JOIN userdingdan udd
-                    ON sh.shid=udd.shid
+                    sps.sprice sprice,
+                    sps.sname sname,
+                    sps.sbeizhu sbeizhu,
+                    sps.simg simg,
+                    sp.scount ucount
+                    FROM usershop sp
+                    INNER JOIN  userdingdan udd
+                    ON sp.uddid=udd.uddid
                     INNER JOIN userdtails utd
-                    ON utd.uid=udd.uid
-                    INNER JOIN shop sp
-                    ON sp.sid=udd.sid
+                    ON  sp.uid=utd.uid
+                    INNER JOIN  shop sps
+                    ON sps.sid=sp.sid
+                    INNER JOIN shanghu sh
+                    ON udd.shid=sh.shid
                     <where>
                         <if test="uid!=0">
-                            and   udd.uid= #{uid}
+                            and   sh.shid= #{shid}
                         </if>
                         <if test="udname!=null and udname!=''">
                             and udname like concat('%',#{udname},'%')

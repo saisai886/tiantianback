@@ -2,10 +2,7 @@ package com.guigu.tian.service.jiangweijie;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.github.pagehelper.PageInfo;
-import com.guigu.tian.entity.Userdingdan;
-import com.guigu.tian.entity.Userdtails;
-import com.guigu.tian.entity.Usershanghu;
-import com.guigu.tian.entity.Usershop;
+import com.guigu.tian.entity.*;
 import com.guigu.tian.entity.hesijie.Shanghu;
 import com.guigu.tian.entity.jiangweijie.Supgowuche;
 import com.guigu.tian.entity.jiangweijie.Supgowuchetiaoiang;
@@ -93,4 +90,15 @@ public interface GohsgowucheService extends IService<Usershop> {
     Shanghu shanghuiiddd(int id);
     //usershop 修改状态
     int userupdateshop(Usershop shop);
+
+
+
+    //待支付 ，支付成功
+    int  Alldaizhifuchego(int id);
+
+    //商品数量
+    int updatenum(Shop shop);
+
+    //数量
+    Usershop numshuliang(Usershop shop);
 }

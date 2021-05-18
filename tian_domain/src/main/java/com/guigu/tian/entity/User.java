@@ -25,4 +25,6 @@ public class User {
     //用户状态
      private String  userzhuangtai;
 
+     //后台
+    private String userboutten;
 }

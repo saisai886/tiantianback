@@ -6,6 +6,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.guigu.tian.entity.MyHsj_UserDingDangs;
 import com.guigu.tian.entity.Userdingdan;
+import com.guigu.tian.entity.hesijie.MyCheliang;
 import com.guigu.tian.entity.hesijie.Shanghu;
 import com.guigu.tian.mapper.hesijie.Hsj_DingDangMapper;
 import com.guigu.tian.service.hesijie.Hsj_DingDangService;
@@ -34,12 +35,17 @@ public class Hsj_DingDangServiceImpl extends ServiceImpl<Hsj_DingDangMapper, Use
 
         @Override
         public int updateUserDingdang(int uddid) {
+                MyCheliang myCheliang = hsj_dingDangMapper.queryCheliangShow(uddid);
+                hsj_dingDangMapper.updateChelianggl(myCheliang.getClcid());
+                hsj_dingDangMapper.updateCheliangps(myCheliang.getPcid());
+//                hsj_dingDangMapper.updateYuangong(myCheliang.getYgid());
                 return hsj_dingDangMapper.updateUserDingdang(uddid);
         }
 
         @Override
         public List<Long> shopSprice(int uid) {
                 Shanghu shanghu = hsj_dingDangMapper.queryId(uid);
+                System.out.println(shanghu.getShid());
                 QueryWrapper<Userdingdan> wrapper=new QueryWrapper<Userdingdan>();
                 wrapper.eq("shid",shanghu.getShid());
                 wrapper.lt("udtime", "2021-12-31");

@@ -67,7 +67,7 @@ public class Hsj_RukuServiceImpl extends ServiceImpl<Hsj_RukuMapper, Cangkuruku>
                          shopMapper.updateById(shop);
                     }
                if(!li.getGsname().equals(ls.getSname())){
-                  shop2=new Shop();
+                 shop2=new Shop();
                 shop2.setSname(li.getGsname());
                 shop2.setSoldprice(Math.round(li.getGsprice()));
                 shop2.setSchandi(li.getGschandi());

@@ -3,10 +3,7 @@ package com.guigu.tian.service.jiangweijie.impl;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.guigu.tian.entity.Userdingdan;
-import com.guigu.tian.entity.Userdtails;
-import com.guigu.tian.entity.Usershanghu;
-import com.guigu.tian.entity.Usershop;
+import com.guigu.tian.entity.*;
 import com.guigu.tian.entity.hesijie.Shanghu;
 import com.guigu.tian.entity.jiangweijie.Supgowuche;
 import com.guigu.tian.entity.jiangweijie.Supgowuchetiaoiang;
@@ -153,6 +150,22 @@ public class GohsgowucheServiceImpl extends ServiceImpl<GhshangGowucheMapper, Us
     @Override
     public int userupdateshop(Usershop shop) {
         return ghshangGowucheMapper.userupdateshop(shop);
+    }
+
+    @Override
+    public int Alldaizhifuchego(int id) {
+        return ghshangGowucheMapper.Alldaizhifuchego(id);
+    }
+
+    @Override
+    public int updatenum(Shop shop) {
+        return ghshangGowucheMapper.updatenum(shop);//商品数量
+
+    }
+
+    @Override
+    public Usershop numshuliang(Usershop shop) {
+        return ghshangGowucheMapper.numshuliang(shop);
     }
 
 }
