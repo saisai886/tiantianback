@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.guigu.tian.mapper.jiangweijie.GgrzhoxingMapper" >
+
+    <select id="selectid" resultType="com.guigu.tian.entity.Userdtails" parameterType="com.guigu.tian.entity.Userdtails">
+        SELECT * FROM userdtails WHERE uid=#{uid}
+    </select>
+
+
+    <update id="update"  parameterType="com.guigu.tian.entity.Userdtails">
+        update userdtails set udname=#{udname}, udphone=#{udphone}, udaddr=#{udaddr},  udimg=#{udimg},   udsex=#{udsex}, udmoney=#{udmoney},  udpwd=#{udpwd} WHERE uid=#{uid}
+    </update>
+
+</mapper>

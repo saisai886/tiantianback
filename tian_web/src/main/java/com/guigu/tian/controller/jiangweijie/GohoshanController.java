@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.extension.service.additional.query.impl.QueryCha
 import com.github.pagehelper.PageInfo;
 import com.guigu.tian.entity.Gongyingshang;
 import com.guigu.tian.entity.Gongyingshop;
+import com.guigu.tian.entity.jiangweijie.Supuserlogn;
 import com.guigu.tian.service.jiangweijie.GohsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -56,9 +57,10 @@ public class GohoshanController {
 
     @RequestMapping(value = "tianjian", produces = {"application/json;charset=utf-8"})
     @ResponseBody
-    public String suptianjian(Gongyingshop shop){
+    public String suptianjian(Gongyingshop shop,int uid){
         System.out.println(shop);
-        shop.setGid(1); //外键id
+        Gongyingshang shagnselect = gohsService.shagnselect(uid);
+        shop.setGid(shagnselect.getGid()); //外键id
         int goninsert = gohsService.goninsert(shop);
             return "";
     }
@@ -71,4 +73,17 @@ public class GohoshanController {
         return "";
     }
 
+
+
+
+    //关联
+    @RequestMapping("/userlogin")
+    @ResponseBody
+    public Supuserlogn userlogin(int uid){
+        Supuserlogn login=new Supuserlogn();
+        login.setUid(uid);
+        Supuserlogn selectlogin = gohsService.selectlogin(login);
+
+            return selectlogin;
+    }
 }

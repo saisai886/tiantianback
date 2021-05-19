@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.github.pagehelper.PageInfo;
 import com.guigu.tian.entity.Gongyingshang;
 import com.guigu.tian.entity.Gongyingshop;
+import com.guigu.tian.entity.jiangweijie.Supuserlogn;
 
 public interface GohsService extends IService<Gongyingshop> {
 
@@ -14,4 +15,10 @@ public interface GohsService extends IService<Gongyingshop> {
     int goninsert(Gongyingshop shop);
 
     int gondelete(int id);
+
+    Gongyingshang shagnselect(int uid);
+
+
+    //user关联
+    Supuserlogn selectlogin(Supuserlogn id);
 }

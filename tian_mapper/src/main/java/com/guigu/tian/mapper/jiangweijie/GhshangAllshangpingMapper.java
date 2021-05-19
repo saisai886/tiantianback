@@ -1,7 +1,9 @@
 package com.guigu.tian.mapper.jiangweijie;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.guigu.tian.entity.Gongyingshang;
 import com.guigu.tian.entity.Userdingdan;
+import com.guigu.tian.entity.hesijie.Shanghu;
 import com.guigu.tian.entity.jiangweijie.SupshangpingAll;
 
 import java.util.List;
@@ -31,4 +33,20 @@ public interface GhshangAllshangpingMapper extends BaseMapper<SupshangpingAll> {
 
     //已提货
     List<Userdingdan> YeAlldaitihuo();
+
+
+
+    //商户注册
+    int shanghuinsert(Shanghu shan);
+
+    //查询
+    Shanghu shangpangduan(int id);
+
+    //供应商
+    int gongyingshang(Gongyingshang shang);
+
+    //查询
+    Gongyingshang gyshagn(Gongyingshang id);
+
+
 }
