@@ -50,6 +50,15 @@
     </select>
 
 
+    <!--商户注册-->
+    <insert id="shanghuinsert" parameterType="com.guigu.tian.entity.hesijie.Shanghu">
+        insert into shanhu values(default,#{uid},#{shname},#{shfuzename},#{shphone},#{shaddr},#{shfuzecard},#{shzhizhao},#{shzhucetime},#{shzhuangtai})
+    </insert>
+
+    <!--供应商注册-->
+    <insert id="gongyingshang" parameterType="com.guigu.tian.entity.Gongyingshop">
+        insert into gongyingshang values(default,#{uid},#{gname},#{gaddre},#{gphone},#{gzhutitype},#{gfaname},#{gfarcard},#{gzhucetime},#{gyingyeimg})
+    </insert>
 
 
 </mapper>

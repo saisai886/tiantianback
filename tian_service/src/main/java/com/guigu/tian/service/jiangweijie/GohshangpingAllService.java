@@ -3,7 +3,9 @@ package com.guigu.tian.service.jiangweijie;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.github.pagehelper.PageInfo;
+import com.guigu.tian.entity.Gongyingshang;
 import com.guigu.tian.entity.Userdingdan;
+import com.guigu.tian.entity.hesijie.Shanghu;
 import com.guigu.tian.entity.jiangweijie.SupshangpingAll;
 
 import java.util.List;
@@ -33,4 +35,12 @@ public interface GohshangpingAllService extends IService<SupshangpingAll> {
 
     //已提货
     PageInfo<Userdingdan> YeAlldaitihuo(int pageNo,int pageSize);
+
+
+    //商户注册
+    int shanghuinsert(Shanghu shan);
+
+
+    //供应商
+    int gongyingshang(Gongyingshang shang);
 }

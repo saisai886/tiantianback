@@ -3,7 +3,9 @@ package com.guigu.tian.service.jiangweijie.impl;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.guigu.tian.entity.Gongyingshang;
 import com.guigu.tian.entity.Userdingdan;
+import com.guigu.tian.entity.hesijie.Shanghu;
 import com.guigu.tian.entity.jiangweijie.SupshangpingAll;
 import com.guigu.tian.mapper.jiangweijie.GhshangAllshangpingMapper;
 import com.guigu.tian.service.jiangweijie.GohshangpingAllService;
@@ -76,6 +78,16 @@ public class GohshangpingAllImpl extends ServiceImpl<GhshangAllshangpingMapper, 
         PageInfo<Userdingdan> pageInfo=new PageInfo<Userdingdan>(userdingdans);
 
         return pageInfo;
+    }
+
+    @Override
+    public int shanghuinsert(Shanghu shan) {
+        return ghshangAllshangpingMapper.shanghuinsert(shan);
+    }
+
+    @Override
+    public int gongyingshang(Gongyingshang shang) {
+        return ghshangAllshangpingMapper.gongyingshang(shang);
     }
 
 
