@@ -42,12 +42,16 @@ public class Hsj_DingDangServiceImpl extends ServiceImpl<Hsj_DingDangMapper, Use
 
 
         @Override
-        public int updateUserDingdang(int uddid) {
-                MyCheliang myCheliang = hsj_dingDangMapper.queryCheliangShow(uddid);
-                hsj_dingDangMapper.updateChelianggl(myCheliang.getClcid());
-                hsj_dingDangMapper.updateCheliangps(myCheliang.getPcid());
-//                hsj_dingDangMapper.updateYuangong(myCheliang.getYgid());
-                return hsj_dingDangMapper.updateUserDingdang(uddid);
+        public int updateUserDingdang(List<MyHsj_UserDingDangs> myHsj_userDingDangs) {
+                for (MyHsj_UserDingDangs ms:myHsj_userDingDangs) {
+//                        MyCheliang myCheliang = hsj_dingDangMapper.queryCheliangShow(ms.getUddid());
+//                        hsj_dingDangMapper.updateChelianggl(myCheliang.getClcid());
+//                        hsj_dingDangMapper.updateCheliangps(myCheliang.getPcid());
+//                        hsj_dingDangMapper.updateYuangong(myCheliang.getYgid());
+                        hsj_dingDangMapper.updateUserDingdang(ms.getUddid());
+                }
+
+                return 0;
         }
 
         @Override
