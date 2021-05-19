@@ -14,6 +14,11 @@
      where clcid = #{clcid}
     </update>
 
+    <update id="ygupdate" parameterType="com.guigu.tian.entity.Yuangong">
+     update yuangong set ygzhuangtai = #{ygzhuangtai}
+     where ygid = #{ygid}
+    </update>
+
     <update id="uuidupdate" parameterType="java.lang.Integer">
         update userdingdan set uzhuangtai='zb_f00' where uddid=#{uddid}
     </update>
@@ -23,7 +28,7 @@
     </select>
 
     <update id="cheliangpsupdate" parameterType="com.guigu.tian.entity.Cheliangps">
-        update cheliangps set pzhuangtai='z001'
+        update cheliangps set pzhuangtai='z001',clcid=#{clcid},ygid=#{ygid}
         WHERE pcid=#{pcid}
     </update>
 
@@ -35,6 +40,73 @@
          WHERE uddid = #{uddid}
     </update>
 
+    <select id="All" resultType="com.guigu.tian.entity.zhangbei.Zb_cheliangps_cheliangxianxi">
+        SELECT c.*,yg.ygname FROM `cheliangps` c
+INNER JOIN `yuangong` yg
+ON yg.ygid = c.ygid
+    </select>
 
+
+    <insert id="peisonginsert" parameterType="com.guigu.tian.entity.Cheliangps">
+        INSERT INTO `cheliangps`(pcid,pzhuangtai,peisongid)
+         VALUES(NULL,#{pzhuangtai},#{peisongid})
+    </insert>
+
+    <select id="peisongAll" resultType="com.guigu.tian.entity.Cheliangps" parameterType="java.lang.Integer">
+SELECT ps.* FROM `chelianggl` cl
+INNER JOIN `cheliangps` ps
+ON cl.clcid = ps.clcid
+WHERE cl.clcid = #{clcid} and cl.pzhuangtai='z001'
+    </select>
+
+
+
+    <select id="pcidselect" parameterType="java.lang.Integer" resultType="com.guigu.tian.entity.zhangbei.Zb_wanchengpeisong">
+SELECT clps.*,udd.*,yg.ygzhuangtai,cl.clzhuangtai FROM `cheliangps` clps
+INNER JOIN `cheliangxianxi` clxx
+ON clps.pcid = clxx.pcid
+INNER JOIN `userdingdan` udd
+ON udd.uddid = clxx.uddid
+INNER JOIN `yuangong` yg
+ON yg.ygid = clps.ygid
+INNER JOIN `chelianggl` cl
+ON cl.clcid = clps.clcid
+WHERE clps.pcid = #{pcid}
+    </select>
+
+
+    <update id="wcuddidupdate" parameterType="com.guigu.tian.entity.zhangbei.Zb_wanchengpeisong">
+ UPDATE `userdingdan` SET wczhuangtai='wc002'
+ WHERE uddid = #{uddid}
+    </update>
+
+    <update id="wcpcidupdate" parameterType="java.lang.Integer">
+        UPDATE `cheliangps` SET pzhuangtai='z003'
+        WHERE pcid = #{pcid}
+    </update>
+
+    <select id="wcygidselect" resultType="com.guigu.tian.entity.zhangbei.Zb_wanchengpeisong" parameterType="java.lang.Integer">
+        SELECT clps.*,udd.*,yg.ygzhuangtai,cl.clzhuangtai,cl.clname FROM `cheliangps` clps
+INNER JOIN `cheliangxianxi` clxx
+ON clps.pcid = clxx.pcid
+INNER JOIN `userdingdan` udd
+ON udd.uddid = clxx.uddid
+INNER JOIN `yuangong` yg
+ON yg.ygid = clps.ygid
+INNER JOIN `chelianggl` cl
+ON cl.clcid = clps.clcid
+WHERE yg.ygid = #{ygid}
+GROUP BY clps.peisongid
+    </select>
+
+    <update id="wcygidupdate" parameterType="java.lang.Integer">
+        update yuangong set ygzhuangtai='a003'
+        where ygid=#{ygid}
+    </update>
+
+    <update id="wcclidupdate" parameterType="java.lang.Integer">
+        update chelianggl set clzhuangtai='x002'
+        where clcid=#{clcid}
+    </update>
 
 </mapper>
