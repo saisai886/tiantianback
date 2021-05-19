@@ -38,9 +38,20 @@ public class Hsj_ShanHuController {
          Shanghu byId = hsj_ziLiaoWeiHuService.getById(myHsj_userDingDangs.getUid());
          myHsj_userDingDangs.setShid(byId.getShid());
          myHsj_userDingDangs.setUzhuangtai("f001");
-          PageInfo<MyHsj_UserDingDangs> pageInfo = hsj_dingDangService.queryAll(myHsj_userDingDangs, pageNo, pageSize);
+          PageInfo<MyHsj_UserDingDangs> pageInfo = hsj_dingDangService.queryShows(myHsj_userDingDangs, pageNo, pageSize);
          return pageInfo;
      }
+     @RequestMapping("dingdanshowsqueryId")
+     @ResponseBody
+    public PageInfo<MyHsj_UserDingDangs> dingdanshowsqueryId(MyHsj_UserDingDangs myHsj_userDingDangs,@RequestParam(defaultValue = "1")Integer pageNo, @RequestParam(defaultValue = "5") Integer pageSize){
+         myHsj_userDingDangs.setUzhuangtai("f001");
+         PageInfo<MyHsj_UserDingDangs> pageInfo = hsj_dingDangService.queryAll(myHsj_userDingDangs, pageNo, pageSize);
+         return pageInfo;
+     }
+
+
+
+
 
      @RequestMapping("daishouhuo")
      @ResponseBody
@@ -59,7 +70,6 @@ public class Hsj_ShanHuController {
      @ResponseBody
     public int quedingshouhuo(int uddid){
 
-
          return hsj_dingDangService.updateUserDingdang(uddid);
      }
 
@@ -72,9 +82,18 @@ public class Hsj_ShanHuController {
          myHsj_userDingDangs.setShid(byId.getShid());
          myHsj_userDingDangs.setUzhuangtai("f001");
          myHsj_userDingDangs.setUzhuangtai2("f004-1");
-          PageInfo<MyHsj_UserDingDangs> pageInfo = hsj_dingDangService.queryAll(myHsj_userDingDangs, pageNo, pageSize);
+          PageInfo<MyHsj_UserDingDangs> pageInfo = hsj_dingDangService.queryShows(myHsj_userDingDangs, pageNo, pageSize);
           return pageInfo;
      }
+    @RequestMapping("daitihuoqueryId")
+    @ResponseBody
+    public PageInfo<MyHsj_UserDingDangs> daitihuoqueryId(MyHsj_UserDingDangs myHsj_userDingDangs,@RequestParam(defaultValue = "1")Integer pageNo, @RequestParam(defaultValue = "5") Integer pageSize){
+        myHsj_userDingDangs.setUzhuangtai("f001");
+        PageInfo<MyHsj_UserDingDangs> pageInfo = hsj_dingDangService.queryAll(myHsj_userDingDangs, pageNo, pageSize);
+        return pageInfo;
+    }
+
+
 
      @RequestMapping("yitihuo")
      @ResponseBody
@@ -83,9 +102,18 @@ public class Hsj_ShanHuController {
          myHsj_userDingDangs.setShid(byId.getShid());
          myHsj_userDingDangs.setUzhuangtai("f001");
          myHsj_userDingDangs.setUzhuangtai2("f005");
-          PageInfo<MyHsj_UserDingDangs> pageInfo = hsj_dingDangService.queryAll(myHsj_userDingDangs, pageNo, pageSize);
+          PageInfo<MyHsj_UserDingDangs> pageInfo = hsj_dingDangService.queryShows(myHsj_userDingDangs, pageNo, pageSize);
           return pageInfo;
      }
+    @RequestMapping("yitihuoqueryId")
+    @ResponseBody
+    public PageInfo<MyHsj_UserDingDangs> yitihuoqueryId(MyHsj_UserDingDangs myHsj_userDingDangs,@RequestParam(defaultValue = "1")Integer pageNo, @RequestParam(defaultValue = "5") Integer pageSize){
+        myHsj_userDingDangs.setUzhuangtai("f001");
+        PageInfo<MyHsj_UserDingDangs> pageInfo = hsj_dingDangService.queryAll(myHsj_userDingDangs, pageNo, pageSize);
+        return pageInfo;
+    }
+
+
 
      @RequestMapping("yingyeliruen")
      @ResponseBody

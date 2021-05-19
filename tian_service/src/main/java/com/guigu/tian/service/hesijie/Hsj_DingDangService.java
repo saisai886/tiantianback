@@ -12,6 +12,10 @@ public interface Hsj_DingDangService extends IService<Userdingdan> {
     //   查询出商户所有的订单
     PageInfo<MyHsj_UserDingDangs> queryAll(MyHsj_UserDingDangs myHsj_userDingDangs, Integer pageNum, Integer pageSize);
 
+
+    //           查询出商户所有的订单
+    PageInfo<MyHsj_UserDingDangs> queryShows(MyHsj_UserDingDangs myHsj_userDingDangs,Integer pageNum, Integer pageSize);
+
     //          商户确认收货时所改的状态
     int updateUserDingdang(int uddid);
 

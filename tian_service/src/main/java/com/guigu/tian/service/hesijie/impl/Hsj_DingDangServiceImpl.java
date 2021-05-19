@@ -34,6 +34,14 @@ public class Hsj_DingDangServiceImpl extends ServiceImpl<Hsj_DingDangMapper, Use
         }
 
         @Override
+        public PageInfo<MyHsj_UserDingDangs> queryShows(MyHsj_UserDingDangs myHsj_userDingDangs, Integer pageNum, Integer pageSize) {
+                PageHelper.startPage(pageNum,pageSize);
+                List<MyHsj_UserDingDangs> list = hsj_dingDangMapper.queryShows(myHsj_userDingDangs);
+                return new PageInfo<MyHsj_UserDingDangs>(list);
+        }
+
+
+        @Override
         public int updateUserDingdang(int uddid) {
                 MyCheliang myCheliang = hsj_dingDangMapper.queryCheliangShow(uddid);
                 hsj_dingDangMapper.updateChelianggl(myCheliang.getClcid());
