@@ -11,4 +11,16 @@
     <select id="All" parameterType="com.guigu.tian.entity.Shoptype" resultType="com.guigu.tian.entity.Shoptype">
         SELECT *  FROM shoptype
     </select>
+
+    <select id="selecterji" resultType="com.guigu.tian.entity.Shoptype" >
+          SELECT * FROM shoptype WHERE stpanentid=0
+    </select>
+
+    <select id="selectId" parameterType="int" resultType="com.guigu.tian.entity.Shoptype">
+        SELECT * FROM shoptype WHERE stid=#{stid}
+    </select>
+
+    <insert id="tjsplx" parameterType="com.guigu.tian.entity.Shoptype"   >
+        INSERT INTO shoptype  VALUES(NULL,#{stname},#{stpanentid})
+    </insert>
 </mapper>

@@ -42,4 +42,40 @@ public class ShopLxController {
         PageInfo<Shoptype> all = shoptypeService.All(shoptype, pageNo, pageSize);
         return all;
     }
+
+
+    //查询二级分类
+    @RequestMapping("Cxerji.action")
+    @ResponseBody
+    public List<Shoptype> Cxerji(){
+        List<Shoptype> cxerji = shoptypeService.Cxerji();
+        return cxerji;
+    }
+
+
+    //根据id查询
+    @RequestMapping("cxid.action")
+    @ResponseBody
+    public Shoptype cxid(int stid){
+        Shoptype shoptype = shoptypeService.selectId(stid);
+        return shoptype;
+    }
+
+
+
+    //添加
+    @RequestMapping("tjsplx.action")
+    @ResponseBody
+    public  int tjsplx( Shoptype shoptype){
+        int  i= shoptypeService.ShoptypeAdd(shoptype);
+        return i;
+    }
+
+    //删除
+    @RequestMapping("sclx.action")
+    @ResponseBody
+        public  int sclx(int stid){
+        int i = shoptypeService.delectlx(stid);
+        return i;
+    }
 }

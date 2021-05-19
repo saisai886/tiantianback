@@ -57,4 +57,25 @@ public class  ShoptypeServiceimpl extends ServiceImpl<ShopLxMapper, Shoptype> im
         PageInfo<Shoptype> shoptypePageInfo = new PageInfo<Shoptype>(all);
         return shoptypePageInfo;
     }
+
+    @Override
+    public List<Shoptype> Cxerji() {
+        List<Shoptype> selecterji = shopLxMapper.selecterji();
+        return selecterji;
+    }
+
+    @Override
+    public Shoptype selectId(int stid) {
+        return shopLxMapper.selectId(stid);
+    }
+
+    @Override
+    public int ShoptypeAdd(Shoptype shoptype) {
+        return shopLxMapper.tjsplx(shoptype);
+    }
+
+    @Override
+    public int delectlx(int stid) {
+        return shopLxMapper.deleteById(stid);
+    }
 }
