@@ -33,7 +33,7 @@
                     INNER JOIN shanghu sh
                     ON udd.shid=sh.shid
                     <where>
-                        <if test="uid!=0">
+                        <if test="shid!=0">
                             and   sh.shid= #{shid}
                         </if>
                         <if test="udname!=null and udname!=''">
@@ -42,9 +42,49 @@
                         <if test="uzhuangtai2!=null and uzhuangtai2!=''">
                             and udd.uzhuangtai =#{uzhuangtai2}
                         </if>
+                        <if test="uddid !=0">
+                            and udd.uddid =#{uddid}
+                        </if>
                         and udd.uzhuangtai !=#{uzhuangtai}
                     </where>
                 </select>
+                  <select id="queryShows"   parameterType="com.guigu.tian.entity.MyHsj_UserDingDangs" resultType="com.guigu.tian.entity.MyHsj_UserDingDangs">
+                                         SELECT
+                                        sh.shid shid,
+                                        sh.shname shname,
+                                        sh.shaddr shaddr,
+                                        sh.uid uid,
+                                        udd.shid shid,
+                                        udd.uddid uddid,
+                                        udd.udddingdan udddingdan,
+                                        udd.udspricesum udspricesum,
+                                        udd.uzhuangtai uzhuangtai,
+                                        udd.udtime udtime,
+                                        utd.udname udname,
+                                        utd.udphone udphone
+                                        FROM userdingdan udd
+                                        INNER JOIN userdtails utd
+                                        ON utd.uid=udd.uid
+                                        INNER JOIN shanghu sh
+                                        ON sh.shid=udd.shid
+                                          <where>
+                                              <if test="shid!=0">
+                                                  and   sh.shid= #{shid}
+                                              </if>
+                                              <if test="udname!=null and udname!=''">
+                                                  and udname like concat('%',#{udname},'%')
+                                              </if>
+                                              <if test="uzhuangtai2!=null and uzhuangtai2!=''">
+                                                  and udd.uzhuangtai =#{uzhuangtai2}
+                                              </if>
+                                              <if test="uddid !=0">
+                                                  and udd.uddid =#{uddid}
+                                              </if>
+                                              and udd.uzhuangtai !=#{uzhuangtai}
+                                          </where>
+                  </select>
+
+
 
                  <update id="updateUserDingdang" parameterType="int">
                         update userdingdan set uzhuangtai = 'f004-1',uddaititime = now() where uddid = #{uddid}

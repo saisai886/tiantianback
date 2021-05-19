@@ -11,10 +11,13 @@ import org.apache.ibatis.annotations.Update;
 import java.util.List;
 
 public interface Hsj_DingDangMapper extends BaseMapper<Userdingdan> {
-//           查询出商户所有的订单
+//           查询出商户所有的订单详细
           List<MyHsj_UserDingDangs> queryAll(MyHsj_UserDingDangs myHsj_userDingDangs);
 
-//          商户确认收货时所改的状态
+    //           查询出商户所有的订单
+    List<MyHsj_UserDingDangs> queryShows(MyHsj_UserDingDangs myHsj_userDingDangs);
+
+    //          商户确认收货时所改的状态
           int updateUserDingdang(int uddid);
 
 
