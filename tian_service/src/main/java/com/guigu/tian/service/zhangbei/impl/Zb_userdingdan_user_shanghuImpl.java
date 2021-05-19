@@ -38,8 +38,8 @@ public class Zb_userdingdan_user_shanghuImpl implements Zb_userdingdan_user_shan
     }
 
     @Override
-    public List<Shop> shopsidAll(Integer sid) {
-        List<Shop> shops = userdingdan_user_shanghuMapper.shopsidAll(sid);
+    public List<Zb_usershop_shop> shopsidAll(Integer sid) {
+        List<Zb_usershop_shop> shops = userdingdan_user_shanghuMapper.shopsidAll(sid);
         return shops;
     }
 }

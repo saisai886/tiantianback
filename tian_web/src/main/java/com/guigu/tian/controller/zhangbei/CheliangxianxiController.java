@@ -24,4 +24,8 @@ public class CheliangxianxiController {
         int i = cheliangxianxiService.peisongxxinsert(cheliangxianxis);
         return i;
     }
+
+
+
+
 }

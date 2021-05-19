@@ -13,5 +13,5 @@ public interface Zb_userdingdan_user_shanghuMapper {
 
     List<Zb_userdingdan_user_shanghu> pciduserAll(Integer pcid);
 
-    List<Shop> shopsidAll(Integer sid);
+    List<Zb_usershop_shop> shopsidAll(Integer sid);
 }

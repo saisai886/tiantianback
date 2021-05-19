@@ -47,6 +47,9 @@ public class Userdingdan {
 
 //    订单总价格
     private Float udspricesum;
+    
+    //完成配送状态
+    private String  wczhuangtai;
 
 
 

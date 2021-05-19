@@ -6,6 +6,15 @@ import com.guigu.tian.entity.Usershop;
 public class Zb_usershop_shop extends Usershop {
     private String sname;
     private Integer sprice;
+    private String simg;
+
+    public String getSimg() {
+        return simg;
+    }
+
+    public void setSimg(String simg) {
+        this.simg = simg;
+    }
 
     public String getSname() {
         return sname;
