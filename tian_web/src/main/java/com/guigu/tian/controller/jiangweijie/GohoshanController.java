@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.extension.service.additional.query.impl.QueryCha
 import com.github.pagehelper.PageInfo;
 import com.guigu.tian.entity.Gongyingshang;
 import com.guigu.tian.entity.Gongyingshop;
+import com.guigu.tian.entity.jiangweijie.Supuserlogn;
 import com.guigu.tian.service.jiangweijie.GohsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -72,4 +73,17 @@ public class GohoshanController {
         return "";
     }
 
+
+
+
+    //关联
+    @RequestMapping("/userlogin")
+    @ResponseBody
+    public Supuserlogn userlogin(int uid){
+        Supuserlogn login=new Supuserlogn();
+        login.setUid(uid);
+        Supuserlogn selectlogin = gohsService.selectlogin(login);
+
+            return selectlogin;
+    }
 }

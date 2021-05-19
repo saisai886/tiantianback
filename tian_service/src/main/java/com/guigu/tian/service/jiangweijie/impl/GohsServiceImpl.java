@@ -5,6 +5,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.guigu.tian.entity.Gongyingshang;
 import com.guigu.tian.entity.Gongyingshop;
+import com.guigu.tian.entity.jiangweijie.Supuserlogn;
 import com.guigu.tian.mapper.jiangweijie.GhshanMapper;
 import com.guigu.tian.service.jiangweijie.GohsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,5 +47,10 @@ public class GohsServiceImpl extends ServiceImpl<GhshanMapper, Gongyingshop> imp
     @Override
     public Gongyingshang shagnselect(int uid) {
         return ghshanMapper.shagnselect(uid);
+    }
+
+    @Override
+    public Supuserlogn selectlogin(Supuserlogn id) {
+        return ghshanMapper.selectlogin(id);
     }
 }

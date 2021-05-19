@@ -26,4 +26,14 @@
     <delete id="Ghshangchu" parameterType="com.guigu.tian.entity.Gongyingshop">
         DELETE FROM gongyingshop WHERE gsid=#{gsid}
     </delete>
+
+
+
+    <!--user关联-->
+    <select id="selectlogin" parameterType="com.guigu.tian.entity.jiangweijie.Supuserlogn" resultType="com.guigu.tian.entity.jiangweijie.Supuserlogn">
+        SELECT * FROM USER INNER JOIN userdtails ON user.`uid`=userdtails.`uid` WHERE user.`uid`=#{uid}
+    </select>
+
+
+
 </mapper>
