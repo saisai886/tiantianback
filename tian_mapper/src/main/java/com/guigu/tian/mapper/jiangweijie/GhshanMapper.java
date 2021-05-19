@@ -17,4 +17,5 @@ public interface GhshanMapper extends BaseMapper<Gongyingshop> {
 
     int Ghshangchu(int delete);
 
+    Gongyingshang shagnselect(int uid);
 }

@@ -52,13 +52,22 @@
 
     <!--商户注册-->
     <insert id="shanghuinsert" parameterType="com.guigu.tian.entity.hesijie.Shanghu">
-        insert into shanhu values(default,#{uid},#{shname},#{shfuzename},#{shphone},#{shaddr},#{shfuzecard},#{shzhizhao},#{shzhucetime},#{shzhuangtai})
+        insert into shanghu values(default,#{uid},#{shname},#{shfuzename},#{shphone},#{shaddr},#{shfuzecard},#{shzhizhao},#{shzhucetime},#{shzhuangtai})
     </insert>
+
+    <select id="shangpangduan" resultType="com.guigu.tian.entity.hesijie.Shanghu" parameterType="com.guigu.tian.entity.hesijie.Shanghu">
+        select * from shanghu where uid=#{uid}
+    </select>
+
 
     <!--供应商注册-->
     <insert id="gongyingshang" parameterType="com.guigu.tian.entity.Gongyingshop">
-        insert into gongyingshang values(default,#{uid},#{gname},#{gaddre},#{gphone},#{gzhutitype},#{gfaname},#{gfarcard},#{gzhucetime},#{gyingyeimg})
+        insert into gongyingshang values(default,#{uid},#{gname},#{gaddre},#{gphone},#{gzhutitype},#{gfaname},#{gfarcard},#{gzhucetime},#{gyingyeimg},#{gzhuangtai})
     </insert>
 
+
+    <select id="gyshagn" resultType="com.guigu.tian.entity.Gongyingshang" parameterType="com.guigu.tian.entity.Gongyingshang">
+        select * from gongyingshang where uid=#{uid}
+    </select>
 
 </mapper>

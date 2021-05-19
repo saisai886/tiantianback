@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RequestMapping("/GwcAll")
@@ -101,22 +102,24 @@ public class GoshangpingAllController {
     //=======商户注册
     @RequestMapping("/shangzc")
     @ResponseBody
-    public int shangzc(@RequestBody List<Shanghu> shanghus,int uid){
-        int shanghuinsert=0;
+    public int shangzc(int uid, String shname, String shfuzename, String shphone, String shaddr, String shfuzecard, String shzhizhao, Date shzhucetime, String shzhuangtai){
 
-        for (Shanghu hu:shanghus){
+
+
+
             Shanghu s=new Shanghu();
             s.setUid(uid);
-            s.setShname(hu.getShname());
-            s.setShfuzename(hu.getShfuzename());
-            s.setShphone(hu.getShphone());
-            s.setShaddr(hu.getShaddr());
-            s.setShfuzecard(hu.getShfuzecard());
-            s.setShzhizhao(hu.getShzhizhao());
-            s.setShzhucetime(hu.getShzhucetime());
-            s.setShzhuangtai("k001");
-             shanghuinsert = gohshangpingAllService.shanghuinsert(s);
-        }
+            s.setShname(shname);
+            s.setShfuzename(shfuzename);
+            s.setShphone(shphone);
+            s.setShaddr(shaddr);
+            s.setShfuzecard(shfuzecard);
+            s.setShzhizhao(shzhizhao);
+            s.setShzhucetime(shzhucetime);
+            s.setShzhuangtai(shzhuangtai);
+
+            int shanghuinsert = gohshangpingAllService.shanghuinsert(s);
+
 
 
         return shanghuinsert;
@@ -125,28 +128,46 @@ public class GoshangpingAllController {
     //=======供应商注册
     @RequestMapping("/gyshang")
     @ResponseBody
-    public int gyshang(@RequestBody List<Gongyingshang> shanghus, int uid){
-        System.out.println(shanghus);
-//        int i=0;
-//        for (Gongyingshang gy:shanghus)
-//        {
-//            Gongyingshang gys=new Gongyingshang();
-//            gys.setUid(uid);
-//            gys.setGaddre(gy.getGaddre());
-//            gys.setGphone(gy.getGphone());
-//            gys.setGzhutitype(gy.getGzhutitype());
-//            gys.setGfaname(gy.getGfaname());
-//            gys.setGfarcard(gy.getGfarcard());
-//            gys.setGzhucetime(gy.getGzhucetime());
-//            gys.setGyingyeimg(gy.getGyingyeimg());
-//            gys.setGzhuangtai("g001");
-//
-//         i=gohshangpingAllService.gongyingshang(gys);
-//        }
+    public int gyshang(int uid,String gname,String gaddre,String gphone,String gzhutitype,String gfaname,String gfarcard,Date gzhucetime,String gyingyeimg,String gzhuangtai){
+
+            Gongyingshang gys=new Gongyingshang();
+            gys.setUid(uid);
+            gys.setGname(gname);
+            gys.setGaddre(gaddre);
+            gys.setGphone(gphone);
+            gys.setGzhutitype(gzhutitype);
+            gys.setGfaname(gfaname);
+            gys.setGfarcard(gfarcard);
+            gys.setGzhucetime(gzhucetime);
+            gys.setGyingyeimg(gyingyeimg);
+            gys.setGzhuangtai(gzhuangtai);
+
+        int i=gohshangpingAllService.gongyingshang(gys);
+
 
         return 1;
     }
 
 
+    @RequestMapping("/pingshagn")
+    @ResponseBody
+    public Shanghu pingshan(int uid){
+
+        Shanghu shangpangduan = gohshangpingAllService.shangpangduan(uid);
+
+        return shangpangduan;
+    }
+
+    @RequestMapping("/gys")
+    @ResponseBody
+    public Gongyingshang gys(int uid){
+        System.out.println(uid);
+        Gongyingshang s=new Gongyingshang();
+        s.setUid(uid);
+
+        Gongyingshang gyshagn = gohshangpingAllService.gyshagn(s);
+
+        return gyshagn;
+    }
 
 }

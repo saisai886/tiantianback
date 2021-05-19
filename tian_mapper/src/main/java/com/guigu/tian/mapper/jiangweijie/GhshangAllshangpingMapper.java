@@ -39,7 +39,14 @@ public interface GhshangAllshangpingMapper extends BaseMapper<SupshangpingAll> {
     //商户注册
     int shanghuinsert(Shanghu shan);
 
+    //查询
+    Shanghu shangpangduan(int id);
+
     //供应商
     int gongyingshang(Gongyingshang shang);
+
+    //查询
+    Gongyingshang gyshagn(Gongyingshang id);
+
 
 }

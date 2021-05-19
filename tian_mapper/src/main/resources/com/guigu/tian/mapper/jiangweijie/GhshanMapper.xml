@@ -19,7 +19,11 @@
         insert into gongyingshop values(default,#{gid},#{gsname},#{gsprice},#{gscount},#{gsmiaoshu},#{gsimg},#{gschandi},#{gstime},#{gsbozhi},#{gschengben})
     </insert>
 
-    <delete id="Ghshangchu">
+    <select id="shagnselect" parameterType="com.guigu.tian.entity.Gongyingshang" resultType="com.guigu.tian.entity.Gongyingshang">
+            select * from gongyingshang where uid=#{uid}
+    </select>
+
+    <delete id="Ghshangchu" parameterType="com.guigu.tian.entity.Gongyingshop">
         DELETE FROM gongyingshop WHERE gsid=#{gsid}
     </delete>
 </mapper>

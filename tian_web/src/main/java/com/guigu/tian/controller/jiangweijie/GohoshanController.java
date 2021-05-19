@@ -56,9 +56,10 @@ public class GohoshanController {
 
     @RequestMapping(value = "tianjian", produces = {"application/json;charset=utf-8"})
     @ResponseBody
-    public String suptianjian(Gongyingshop shop){
+    public String suptianjian(Gongyingshop shop,int uid){
         System.out.println(shop);
-        shop.setGid(1); //外键id
+        Gongyingshang shagnselect = gohsService.shagnselect(uid);
+        shop.setGid(shagnselect.getGid()); //外键id
         int goninsert = gohsService.goninsert(shop);
             return "";
     }

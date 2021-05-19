@@ -86,8 +86,18 @@ public class GohshangpingAllImpl extends ServiceImpl<GhshangAllshangpingMapper, 
     }
 
     @Override
+    public Shanghu shangpangduan(int id) {
+        return ghshangAllshangpingMapper.shangpangduan(id);
+    }
+
+    @Override
     public int gongyingshang(Gongyingshang shang) {
         return ghshangAllshangpingMapper.gongyingshang(shang);
+    }
+
+    @Override
+    public Gongyingshang gyshagn(Gongyingshang id) {
+        return ghshangAllshangpingMapper.gyshagn(id);
     }
 
 

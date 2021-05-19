@@ -14,4 +14,6 @@ public interface GohsService extends IService<Gongyingshop> {
     int goninsert(Gongyingshop shop);
 
     int gondelete(int id);
+
+    Gongyingshang shagnselect(int uid);
 }

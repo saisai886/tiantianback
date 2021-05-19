@@ -42,4 +42,9 @@ public class GohsServiceImpl extends ServiceImpl<GhshanMapper, Gongyingshop> imp
     public int gondelete(int id) {
         return ghshanMapper.Ghshangchu(id);
     }
+
+    @Override
+    public Gongyingshang shagnselect(int uid) {
+        return ghshanMapper.shagnselect(uid);
+    }
 }
