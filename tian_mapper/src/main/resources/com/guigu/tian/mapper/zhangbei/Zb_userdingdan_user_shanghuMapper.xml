@@ -19,17 +19,25 @@ WHERE usp.`uddid` = #{uddid}
     </select>
 
     <select id="pciduserAll" resultType="com.guigu.tian.entity.zhangbei.Zb_userdingdan_user_shanghu" parameterType="java.lang.Integer">
-SELECT udd.*,u.uname,usp.sid AS spsid FROM `cheliangxianxi` cxx
+SELECT udd.*,u.uname,usp.sid AS spsid,sh.shname,sh.shaddr FROM `cheliangxianxi` cxx
 INNER JOIN `userdingdan` udd
 ON cxx.uddid = udd.uddid
 INNER JOIN USER u
 ON u.uid  = udd.uid
 INNER JOIN `usershop` usp
 ON usp.uddid = udd.uddid
+INNER JOIN `shanghu`  sh
+ON sh.shid = udd.shid
 WHERE cxx.pcid = #{pcid}
+GROUP BY udd.`udddingdan`
     </select>
 
-    <select id="shopsidAll" resultType="com.guigu.tian.entity.Shop" parameterType="java.lang.Integer">
-        select * from shop where sid = #{sid}
+    <select id="shopsidAll" resultType="com.guigu.tian.entity.zhangbei.Zb_usershop_shop" parameterType="java.lang.Integer">
+     SELECT sp.*,usp.scount FROM `userdingdan` udd
+INNER JOIN `usershop` usp
+ON udd.uddid = usp.uddid
+INNER JOIN `shop` sp
+ON usp.sid = sp.sid
+WHERE udd.uddid = #{uddid}
     </select>
 </mapper>

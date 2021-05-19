@@ -14,10 +14,7 @@ import com.guigu.tian.service.hesijie.Hsj_ZiLiaoWeiHuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
@@ -68,11 +65,17 @@ public class Hsj_ShanHuController {
 
      @RequestMapping("quedingshouhuo")
      @ResponseBody
-    public int quedingshouhuo(int uddid){
-
-         return hsj_dingDangService.updateUserDingdang(uddid);
+    public int quedingshouhuo(@RequestBody List<MyHsj_UserDingDangs> myHsj_userDingDangs){
+         return hsj_dingDangService.updateUserDingdang(myHsj_userDingDangs);
      }
 
+    @RequestMapping("daishouhuoqueryId")
+    @ResponseBody
+    public PageInfo<MyHsj_UserDingDangs> daishouhuoqueryId(MyHsj_UserDingDangs myHsj_userDingDangs,@RequestParam(defaultValue = "1")Integer pageNo, @RequestParam(defaultValue = "5") Integer pageSize){
+        myHsj_userDingDangs.setUzhuangtai("f001");
+        PageInfo<MyHsj_UserDingDangs> pageInfo = hsj_dingDangService.queryAll(myHsj_userDingDangs, pageNo, pageSize);
+        return pageInfo;
+    }
 
 
      @RequestMapping("daitihuo")

@@ -13,5 +13,5 @@ public interface Zb_userdingdan_user_shanghuSerivce {
     List<Zb_usershop_shop> uspAll(Integer uddid);
 
     List<Zb_userdingdan_user_shanghu> pciduserAll(Integer pcid);
-    List<Shop> shopsidAll(Integer sid);
+    List<Zb_usershop_shop> shopsidAll(Integer sid);
 }

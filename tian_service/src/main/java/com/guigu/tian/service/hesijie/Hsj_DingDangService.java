@@ -17,7 +17,7 @@ public interface Hsj_DingDangService extends IService<Userdingdan> {
     PageInfo<MyHsj_UserDingDangs> queryShows(MyHsj_UserDingDangs myHsj_userDingDangs,Integer pageNum, Integer pageSize);
 
     //          商户确认收货时所改的状态
-    int updateUserDingdang(int uddid);
+    int updateUserDingdang(List<MyHsj_UserDingDangs> myHsj_userDingDangs);
 
 //           拿到当个商品的进货价格
         List<Long> shopSprice(int uid);

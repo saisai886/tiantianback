@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @Controller
 @CrossOrigin
@@ -28,17 +27,17 @@ public class Hsj_ZiLiaoWeiHuController {
 
     @RequestMapping("ziliaoweihuUpdate")
     @ResponseBody
-    public String  ziliaoweihuUpdate(@RequestBody Shanghu shanghu){
-        String substring2 = shanghu.getShzhizhao().substring(0,4);
+    public int  ziliaoweihuUpdate(@RequestBody Shanghu shanghu){
+        String substring2 = shanghu.getShzhizhao().substring(0,8);
+        System.out.println(substring2);
          if(shanghu.getShzhizhao()!=null) {
-             if (!substring2.equals("img/")) {
-                 shanghu.setShzhizhao("img/" + shanghu.getShzhizhao());
+             if (!substring2.equals("shanghu/")) {
+                 shanghu.setShzhizhao("shanghu/" + shanghu.getShzhizhao());
              }
-         }else {
-             return "请选择店铺营业执照";
          }
         boolean b= hsj_ziLiaoWeiHuService.updateById(shanghu);
-        return b ? "add success" : "add fail";
+//        return b ? "add success" : "add fail";
+        return 1;
     }
 
 

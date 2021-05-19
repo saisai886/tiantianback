@@ -43,8 +43,8 @@ public class Zb_userdingdan_user_shanghuController {
 
     @RequestMapping("sidAll.action")
     @ResponseBody
-    public List<Shop> sidAll(Integer sid){
-        List<Shop> shops = zb_userdingdan_user_shanghuSerivce.shopsidAll(sid);
+    public List<Zb_usershop_shop> sidAll(Integer uddid){
+        List<Zb_usershop_shop> shops = zb_userdingdan_user_shanghuSerivce.shopsidAll(uddid);
         return shops;
     }
 }

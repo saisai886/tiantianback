@@ -4,8 +4,27 @@ import com.guigu.tian.entity.Cheliangxianxi;
 
 public class Zb_cheliangps_cheliangxianxi extends Cheliangxianxi {
     private int  ygid;
+    private int  clcid;
     private String ygname;
     private String peisongid;
+    private String pzhuangtai;
+
+
+    public int getClcid() {
+        return clcid;
+    }
+
+    public void setClcid(int clcid) {
+        this.clcid = clcid;
+    }
+
+    public String getPzhuangtai() {
+        return pzhuangtai;
+    }
+
+    public void setPzhuangtai(String pzhuangtai) {
+        this.pzhuangtai = pzhuangtai;
+    }
 
     public int getYgid() {
         return ygid;
